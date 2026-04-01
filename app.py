@@ -108,4 +108,26 @@ def index():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=port)// এই কোডটি আপনার বটের স্ক্রিপ্ট সেকশনে আপডেট করুন
+function generateSignal() {
+    // ... আপনার আগের কোড ...
+    
+    setTimeout(() => {
+        // ... আগের সিগন্যাল লজিক ...
+        
+        let now = new Date();
+        let secondsLeft = 60 - now.getSeconds();
+        
+        // এন্ট্রি টাইম নির্ধারণ (পরবর্তী নতুন ক্যান্ডেল)
+        let entryTime = new Date(now.getTime() + secondsLeft * 1000);
+        let entryStr = (entryTime.getHours() < 10 ? '0' : '') + entryTime.getHours() + ":" + 
+                       (entryTime.getMinutes() < 10 ? '0' : '') + entryTime.getMinutes() + ":00";
+
+        document.getElementById('target-time').innerHTML = 
+            "<span style='color:#ffcc00;'>Next Entry: " + entryStr + "</span><br>" +
+            "Wait for this candle to close.";
+            
+    }, 1000);
+}
+
+

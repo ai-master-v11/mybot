@@ -126,3 +126,32 @@ def index():
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
+from flask import Flask, request, jsonify
+import requests
+
+app = Flask(__name__)
+
+# আপনার সেই বিশাল সাইকোলজি লিস্ট
+PSYCHOLOGY_ALGO = "ACTIVE"
+
+@app.route('/webhook', methods=['POST'])
+def quotex_receiver():
+    data = request.json  # কোটেক্স বা ট্রেডিংভিউ থেকে আসা লাইভ ডাটা
+    
+    # আপনার দেওয়া প্যাটার্ন চেক করা হচ্ছে
+    if data:
+        pattern = data.get('pattern')
+        signal = data.get('action') # UP বা DOWN
+        
+        # সরাসরি আপনার ফোনে নোটিফিকেশন পাঠানো (টেলিগ্রামের মাধ্যমে)
+        send_to_phone(f"🚨 ALGO MATCHED! \nPattern: {pattern} \nSignal: {signal}")
+        
+        return "Signal Received", 200
+    return "No Data", 400
+
+def send_to_phone(message):
+    # এখানে আপনার টেলিগ্রাম বটের কানেকশন থাকবে
+    print(message)
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)

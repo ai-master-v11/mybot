@@ -3,7 +3,7 @@ def check_candle_patterns(candles):
     
     # ১. Hammer (Bullish Reversal)
     if (candles[-1].wick_bottom > candles[-1].body * 2) and (candles[-1].close > candles[-1].open):
-        return "UP (CALL) 🟢", "Hammer detected at Support. Buyers are back!"
+        return "UP (CALL) 🟢", "Hammer python main.py at Support. Buyers are back!"
 
     # ২. Bullish Engulfing (Strong Buy)
     if (candles[-1].close > candles[-2].open) and (candles[-2].close < candles[-2].open):

@@ -1,6 +1,0 @@
-services:
-  - type: web
-    name: ai-master-v14
-    env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: streamlit run dashboard.py

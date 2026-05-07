@@ -32,3 +32,16 @@ class Project07_TheCore:
 
 # সিস্টেম রান করার সিগন্যাল
 print(f"Project 07: Launching Beyond Human Imagination - {Project07_TheCore().signature}")
+import time
+
+# আপনার আগের সব কোড এখানে থাকবে...
+
+if __name__ == "__main__":
+    print("🚀 Project 07 is now running permanently on Render...")
+    
+    # এটি আপনার কোডকে কখনো বন্ধ হতে দেবে না
+    while True:
+        # এখানে আপনার মেইন লজিক বা স্ক্যানার কল করতে পারেন
+        # উদাহরণ: scan_market()
+        
+        time.sleep(10) # প্রতি ১০ সেকেন্ড পর পর লুপটি চলবে

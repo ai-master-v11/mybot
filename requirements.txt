@@ -1,5 +1,3 @@
 numpy
 pandas
-pandas_ta
 flask
-web3

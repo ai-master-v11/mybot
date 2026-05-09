@@ -607,7 +607,9 @@ class OmniSyncEngine:
         </div>
     </body>
     """
-    return html
+    def dashboard():
+    html = """<h1>Project 07: Live</h1>"""
+    return html  # এটি এখন ফাংশনের ভেতরে আছে, তাই ঠিকঠাক কাজ করবে
 
 if __name__ == "__main__":
     # রেন্ডার পোর্টের সাথে কানেক্ট করার জন্য

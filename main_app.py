@@ -592,30 +592,6 @@ class OmniSyncEngine:
         if len(signals_from_all_files) > 15: # যদি ১৫টির বেশি ফাইল একমত হয়
             return "UNIVERSAL_ELITE_SIGNAL_CONFIRMED 💎"
         return "SYNCING_SOURCES... WAIT FOR CONFLUENCE"
-
-# প্রজেক্টের জন্য একটি ডিরেক্টরি তৈরি
-WORKDIR /app
-
-# সব ডিপেন্ডেন্সি ইনস্টল করা
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# আপনার সব ২৬টি ফাইল সার্ভারে কপি করা
-COPY . .
-
-# রেন্ডারে পোর্ট এক্সপোজ করা (যদি ওয়েব ড্যাশবোর্ড থাকে)
-EXPOSE 8080
-
-# কমান্ড যা আপনার ২৬টি ফাইলকে একসাথে ট্রিগার করবে
-CMD ["python", "main.py"]
-from flask import Flask
-import os
-
-app = Flask(__name__)
-
-@app.route('/')
-def dashboard():
-    # এটি রেন্ডারে রান করলে আপনি ব্রাউজারে দেখতে পাবেন
     html = """
     <body style="background-color:#0d1117; color:#58a6ff; font-family: sans-serif; text-align:center; padding:50px;">
         <h1 style="color:#238636;">🚀 Project 07: The Elite Hunt - Online</h1>

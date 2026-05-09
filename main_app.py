@@ -588,16 +588,7 @@ class OmniSyncEngine:
         """
         আপনার আগের সব (২৫টি) ফাইল থেকে আসা সিগন্যালগুলো একসাথে যাচাই করা।
         যেকোনো ৩টি চেইন বা সোর্স যদি একমত হয়, তবেই এটি 'Universal Signal'।
-        """
-        if len(signals_from_all_files) > 15: # যদি ১৫টির বেশি ফাইল একমত হয়
-            return "UNIVERSAL_ELITE_SIGNAL_CONFIRMED 💎"
-        return "SYNCING_SOURCES... WAIT FOR CONFLUENCE"
-    html = """
-    <body style="background-color:#0d1117; color:#58a6ff; font-family: sans-serif; text-align:center; padding:50px;">
-        <h1 style="color:#238636;">🚀 Project 07: The Elite Hunt - Online</h1>
-        <hr style="border:0.5px solid #30363d;">
-        <div style="margin-top:20px;">
-            <p><b>System Status:</b> <span style="color:#39d353;">ACTIVE (Vision 2030)</span></p>
+        
             <p><b>Active Modules:</b> 26 Files Synced</p>
             <p><b>Execution Node:</b> Render Cloud</p>
             <p><b>Signal Precision:</b> 95% Quantum Accuracy</p>

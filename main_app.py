@@ -593,14 +593,6 @@ class OmniSyncEngine:
             return "UNIVERSAL_ELITE_SIGNAL_CONFIRMED 💎"
         return "SYNCING_SOURCES... WAIT FOR CONFLUENCE"
 
-# এই মডিউলটি আপনার প্রজেক্টের 'গ্লোবাল গেটওয়ে' হিসেবে কাজ করবে।
-# ২০৩০ ভিশন বটের জন্য লাইটওয়েট এবং সুপার ফাস্ট পাইথন ইমেজ
-FROM python:3.11-slim
-
-# সার্ভারের পারফরম্যান্স বাড়ানোর জন্য এনভায়রনমেন্ট সেটিংস
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
 # প্রজেক্টের জন্য একটি ডিরেক্টরি তৈরি
 WORKDIR /app
 

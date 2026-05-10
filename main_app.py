@@ -634,3 +634,76 @@ def main():
 
 if __name__ == "__main__":
     main()
+import requests
+import json
+
+# --- মাস্টার কনফিগারেশন ---
+API_KEY = "YOUR_OPENROUTER_API_KEY"
+MODEL_ID = "gryphe/mythos-l2-13b"
+
+def get_high_probability_signal(market_data, candle_logic, psycho_logic, historical_data):
+    """
+    এই ফাংশনটি আপনার সব লজিককে ফিল্টার করে শুধুমাত্র ৯০%+ শিউর সিগন্যাল দেবে।
+    """
+    url = "https://openrouter.ai/api/v1/chat/completions"
+    headers = {
+        "Authorization": f"Bearer {API_KEY}",
+        "Content-Type": "application/json"
+    }
+
+    # আপনার সব অ্যাডভান্সড লজিককে এখানে এক করা হয়েছে
+    master_prompt = f"""
+    [SYSTEM ROLE]: Elite Trading Bot Engine (Project 07).
+    [INPUT DATA]:
+    1. Candlestick Patterns: {candle_logic}
+    2. Market Psychology: {psycho_logic}
+    3. 10-Year Historical Context: {historical_data}
+    4. Current Live Market: {market_data}
+
+    [STRICT REQUIREMENT]: 
+    - Evaluate all logic layers. 
+    - If the overall win probability is LESS THAN 90%, output: "STATUS: NO_TRADE | REASON: Low Confidence".
+    - If the probability is 90% to 100%, output: "STATUS: EXECUTE | SIGNAL: [BUY/SELL] | CONFIDENCE: [XX%]".
+    
+    [RULE]: Don't be greedy. Be extremely strict. We only want 10/10 accuracy.
+    """
+
+    payload = {
+        "model": MODEL_ID,
+        "messages": [
+            {"role": "system", "content": "You are a surgical-grade trading AI. Accuracy is your only god."},
+            {"role": "user", "content": master_prompt}
+        ],
+        "temperature": 0.1 # এটি কোডকে ফালতু সিগন্যাল দেওয়া থেকে বিরত রাখবে
+    }
+
+    try:
+        response = requests.post(url, headers=headers, json=payload)
+        return response.json()['choices'][0]['message']['content']
+    except:
+        return "System Error: Connection Failed"
+
+# --- মেইন বোট লজিক ---
+def main_bot_loop():
+    print("--- Project 07: The Elite Hunt - Master Bot Active ---")
+    
+    # এখানে আপনার সব জমানো লজিকগুলো ইনপুট দিন
+    current_market = "RSI/Price Action data..."
+    my_candles = "Hammer/Doji detected at support..."
+    my_psychology = "Banker's liquidity zone identified..."
+    my_history = "10-year cycle match found..."
+
+    # AI এর কাছ থেকে ফিল্টার করা সিগন্যাল নেওয়া
+    final_decision = get_high_probability_signal(current_market, my_candles, my_psychology, my_history)
+
+    print(f"\n[MASTER BRAIN DECISION]:\n{final_decision}")
+
+    # শুধুমাত্র ৯০% এর উপরে গেলেই আপনার ট্রেডিং প্ল্যাটফর্মে অর্ডার যাবে
+    if "STATUS: EXECUTE" in final_decision:
+        print("!!! PLACING HIGH-ACCURACY TRADE NOW !!!")
+        # এখানে আপনার ট্রেড নেওয়ার কোড (যেমন Quotex বা MT5 API) বসবে
+    else:
+        print(">>> SKIPPING: System is waiting for a 90%+ setup.")
+
+if __name__ == "__main__":
+    main_bot_loop()

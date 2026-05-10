@@ -707,3 +707,67 @@ def main_bot_loop():
 
 if __name__ == "__main__":
     main_bot_loop()
+import requests
+import json
+import time
+
+# --- ADVANCED CONFIGURATION ---
+OPENROUTER_API_KEY = "YOUR_API_KEY"
+MODEL_ID = "gryphe/mythos-l2-13b"
+
+class EliteHuntSystem:
+    def __init__(self):
+        self.api_key = OPENROUTER_API_KEY
+        self.history_limit = "10_YEARS" # আপনার ১০ বছরের ডেটা লজিক
+
+    def get_ai_master_decision(self, market_data, candle_patterns, psychology_state):
+        """
+        সব ডাটা নিয়ে AI এর কাছ থেকে চূড়ান্ত সিদ্ধান্ত নেওয়া
+        """
+        url = "https://openrouter.ai/api/v1/chat/completions"
+        headers = {"Authorization": f"Bearer {self.api_key}"}
+        
+        # আপনার সব অ্যাডভান্স তথ্যকে একটি পাওয়ারফুল প্রম্পটে সাজানো
+        master_prompt = f"""
+        [ROLE]: Senior Quantitative Strategist & AI Predictor.
+        [HISTORICAL CONTEXT]: Analyze past 10 years patterns relative to current {market_data}.
+        [CANDLESTICK ANALYSIS]: {candle_patterns}
+        [PSYCHOLOGY]: {psychology_state}
+        [TASK]: Considering future 10-year trends and institutional traps, provide a high-conviction trade.
+        [STRICT RULE]: Only signal if probability is > 95%. Otherwise, say 'ABORT'.
+        """
+
+        payload = {
+            "model": MODEL_ID,
+            "messages": [
+                {"role": "system", "content": "You are the core brain of Project 07. Focus on 100% accuracy and trap detection."},
+                {"role": "user", "content": master_prompt}
+            ],
+            "temperature": 0.3 # রেজাল্ট যাতে কনসিস্টেন্ট থাকে
+        }
+
+        try:
+            response = requests.post(url, headers=headers, json=payload)
+            return response.json()['choices'][0]['message']['content']
+        except Exception as e:
+            return f"System Error: {str(e)}"
+
+    def run_engine(self):
+        print(">>> Project 07: THE ELITE HUNT - ENGINE ACTIVE <<<")
+        
+        # এখানে আপনার সব জমানো লজিকগুলো ভেরিয়েবল হিসেবে থাকবে
+        market_data = "Current Trend + 10 Year Cycle Analysis"
+        candle_patterns = "All Master Candle Patterns Detected"
+        psychology = "Institutional Manipulation & Retail Trap Zones"
+
+        print("[!] Synchronizing Multi-Layer Logic...")
+        decision = self.get_ai_master_decision(market_data, candle_patterns, psychology)
+        
+        print("\n--- MASTER SIGNAL ---")
+        print(decision)
+        print("---------------------")
+
+# সিস্টেম রান করা
+if __name__ == "__main__":
+    bot = EliteHuntSystem()
+    bot.run_engine()

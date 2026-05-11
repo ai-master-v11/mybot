@@ -1,3 +1,81 @@
 streamlit
 pandas
 yfinance
+import requests
+import json
+import time
+
+# --- ১. আপনার দেওয়া API Key এখানে সেট করা হয়েছে ---
+OPENROUTER_API_KEY = "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"
+
+def get_master_95_percent_signal(market_data):
+    """
+    আপনার সেই ১০০ জন এক্সপার্টের ভোট নেওয়ার লজিক।
+    ৯৫% ভোট না হলে এটি কোনো সিগন্যাল দেবে না।
+    """
+    url = "https://openrouter.ai/api/v1/chat/completions"
+    headers = {
+        "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://replit.com", # আপনার সাইট রেফারেন্স
+        "X-Title": "Project 07 Elite Hunt"
+    }
+
+    # আপনার সেই কড়া নির্দেশ (Strict Majority Rule)
+    prompt = f"""
+    [ROLE]: You are the Brain of Project 07. You lead a council of 100 trading experts.
+    [MARKET DATA]: {market_data}
+    
+    [STRICT VOTING PROTOCOL]:
+    1. Every expert must analyze Candlestick, Psychology, and 10-year History to vote.
+    2. Count the votes for UP and DOWN.
+    3. IF 'UP' or 'DOWN' gets 95% or more votes (95/100), output: "STATUS: EXECUTE | SIGNAL: [UP/DOWN] | CONFIDENCE: [X%]"
+    4. If the agreement is less than 95%, output: "STATUS: REJECTED | VOTES: [X%] | REASON: High Risk/No Consensus".
+    
+    [RULE]: We never trade on 80% or 90%. Only 95% to 100% is allowed.
+    """
+
+    payload = {
+        "model": "gryphe/mythos-l2-13b",
+        "messages": [
+            {"role": "system", "content": "You are a surgical-grade trading AI. Accuracy is your only god."},
+            {"role": "user", "content": prompt}
+        ],
+        "temperature": 0.0 # একদম নিখুঁত গণনার জন্য
+    }
+
+    try:
+        response = requests.post(url, headers=headers, json=payload)
+        return response.json()['choices'][0]['message']['content']
+    except Exception as e:
+        return f"Connection Error: {str(e)}"
+
+# --- ২. মেইন বোট লুপ (এটিই আপনার মেইন ফাইল হিসেবে কাজ করবে) ---
+def run_project_07_engine():
+    print(">>> Project 07: THE ELITE HUNT ENGINE ACTIVE <<<")
+    print(">>> 95% Voting System is now Online...\n")
+    
+    while True:
+        # এখানে আপনার লাইভ মার্কেটের ডাটা আসবে (উদাহরণ স্বরূপ দেওয়া হলো)
+        # আপনি আপনার কোড থেকে রিয়েল টাইম ডাটা এখানে ইনপুট দেবেন
+        live_info = "Market hitting 10-year resistance zone, Bearish RSI divergence, Institutional selling volume detected."
+
+        print("[!] Scanning next candle for 95% Consensus...")
+        decision = get_master_95_percent_signal(live_info)
+        
+        print("-" * 50)
+        print(f"MASTER DECISION:\n{decision}")
+        print("-" * 50)
+
+        # চেক করা হচ্ছে ভোট ৯৫% মিলেছে কি না
+        if "STATUS: EXECUTE" in decision:
+            print(">>> [!!!] 95%+ VOTES MATCHED! PLACING TRADE NOW!")
+            # এখানে আপনার ট্রেড নেওয়ার ফাংশন বসবে
+        else:
+            print(">>> [SCANNING] Not enough votes. System is waiting for a 100% setup.")
+
+        # ১০ সেকেন্ড পর আবার নতুন করে স্ক্যান করবে
+        time.sleep(10)
+
+if __name__ == "__main__":
+    run_project_07_engine()

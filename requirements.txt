@@ -1,0 +1,7 @@
+requests
+pandas
+numpy
+pandas_ta
+yfinance
+ccxt
+opencv-python-headless

@@ -4,6 +4,5 @@ numpy
 pandas_ta
 yfinance
 ccxt
-scikit-learn
 opencv-python-headless
-python-dotenv
+scikit-learn

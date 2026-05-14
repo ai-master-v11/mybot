@@ -1141,3 +1141,15 @@ while True:
     current_time = datetime.datetime.now(IST).strftime("%H:%M:%S")
     time_placeholder.markdown(f"<p class='future-time' style='font-size: 22px;'>{current_time}</p>", unsafe_allow_html=True)
     time.sleep(1)
+import os
+import streamlit as st
+import requests
+from dotenv import load_dotenv
+
+# এটি অনলাইন ফাইল (.env) থেকে চাবিটি খুঁজে নেবে
+load_dotenv()
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+
+def show_chat_box(live_data):
+    # বাকি কোড আগের মতোই থাকবে...
+    pass

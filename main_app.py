@@ -1,4 +1,15 @@
 import streamlit as st
+import requests
+# আপনার তৈরি করা নতুন ফাইল থেকে চাবিটি নিয়ে আসা হচ্ছে
+from secret_config import API_KEY 
+
+def show_chat_box(live_data):
+    # এখন সরাসরি API_KEY ভেরিয়েবলটি ব্যবহার করা যাবে
+    if st.button("পরামর্শ নিন"):
+        # বাকি এআই লজিক এখানে চলবে...
+        pass
+
+import streamlit as st
 import datetime
 import pytz 
 import time

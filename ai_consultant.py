@@ -37,3 +37,15 @@ def show_chat_box(live_data):
                     st.info(f"**Elite AI পরামর্শ:** {advice}")
                 except:
                     st.error("এই মুহূর্তে এআই কানেকশন পাওয়া যাচ্ছে না।")
+import os
+import streamlit as st
+import requests
+from dotenv import load_dotenv
+
+# এটি অনলাইন ফাইল (.env) থেকে চাবিটি খুঁজে নেবে
+load_dotenv()
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+
+def show_chat_box(live_data):
+    # বাকি কোড আগের মতোই থাকবে...
+    pass

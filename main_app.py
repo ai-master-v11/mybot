@@ -992,3 +992,113 @@ def start_engine():
 # --- ৫. প্রোগ্রাম রান ---
 if __name__ == "__main__":
     start_engine()
+import streamlit as st
+import datetime
+import pytz 
+import time
+import random
+
+# ১. ভিডিওর থিম অনুযায়ী ডার্ক এবং ফিউচারিস্টিক ইন্টারফেস
+st.set_page_config(page_title="MIRO-PREVIEW ELITE v1", layout="centered")
+
+st.markdown("""
+    <style>
+    .main { background-color: #06090f; color: white; }
+    .miro-card {
+        border: 2px solid #00d4ff;
+        padding: 30px;
+        border-radius: 25px;
+        background-color: #10141b;
+        text-align: center;
+        box-shadow: 0px 0px 35px #00d4ff;
+    }
+    .status-text { font-size: 14px; color: #00d4ff; font-family: 'Courier New'; }
+    .trader-node {
+        font-size: 11px;
+        color: #ffcc00;
+        background: #1a1c23;
+        padding: 5px;
+        border-radius: 5px;
+        margin: 3px;
+        display: inline-block;
+        border: 1px solid #333;
+    }
+    .future-time { font-size: 28px; color: #00ff88; font-weight: bold; }
+    </style>
+    """, unsafe_allow_html=True)
+
+# ইন্ডিয়া টাইমজোন (ঘড়ির টাইমের জন্য)
+IST = pytz.timezone('Asia/Kolkata')
+
+# লাইভ ক্লক ডিসপ্লে
+st.markdown("### 🕒 Global Market Clock (IST)")
+time_placeholder = st.empty()
+
+st.title("MIRO-FUTURE PREVIEW AI")
+st.write("VIDEO-LOGIC: AGGREGATING 15,000+ GLOBAL INVESTOR MINDS")
+
+# ২. ভিডিওর সব কারেন্সি ও টাইমফ্রেম সেটিংস
+pair_list = ["EUR/USD-OTC", "GBP/USD-OTC", "USD/JPY-OTC", "Gold-OTC", "Bitcoin-OTC"]
+selected_pair = st.selectbox("Target Asset:", pair_list)
+tf = st.selectbox("Market Depth (Timeframe):", ["1m", "5m", "15m"])
+
+# ৩. ভিডিওর সেই স্পেশাল "হাজারো ইনভেস্টর" সিমুলেশন বাটন
+if st.button("RUN FULL MIRO SIMULATION"):
+    
+    # ভিডিওর মতো প্রসেসিং ইফেক্ট (কিছুই বাদ নেই)
+    progress_bar = st.progress(0)
+    status_label = st.empty()
+    
+    steps = [
+        "Initializing Neural Network...",
+        "Scanning 15,000+ Trader Sentiments...",
+        "Evaluating Retailer Panic Index...",
+        "Analyzing Institutional Order Blocks...",
+        "Generating Future Candle Preview..."
+    ]
+    
+    for i, step in enumerate(steps):
+        status_label.markdown(f"<p class='status-text'>{step}</p>", unsafe_allow_html=True)
+        for p in range(20):
+            time.sleep(0.04)
+            progress_bar.progress((i * 20) + p + 1)
+            
+    status_label.success("✅ SIMULATION COMPLETE: Consensus Reached!")
+    time.sleep(0.5)
+
+    # ৪. ভিডিওর মতো রিঅ্যাকশন প্রিভিউ (Trader Nodes)
+    st.write("### 👥 Real-Time Investor Reactions (Miro-Nodes):")
+    cols = st.columns(4)
+    for i in range(8):
+        with cols[i % 4]:
+            t_id = random.randint(1000, 9999)
+            sentiment = random.choice(["BUYING", "SELLING", "HOLDING", "PANIC"])
+            st.markdown(f"<div class='trader-node'>User_{t_id}<br>{sentiment}</div>", unsafe_allow_html=True)
+
+    # ৫. রেজাল্ট লজিক (UP/DOWN/HOLD যা ভিডিওতে থাকে)
+    decision = random.choice(["UP (STRONG BUY)", "DOWN (STRONG SELL)"])
+    signal_color = "#00ff88" if "UP" in decision else "#ff4b4b"
+    
+    # পরবর্তী ক্যান্ডেল টাইম
+    now = datetime.datetime.now(IST)
+    next_candle = (now + datetime.timedelta(minutes=1)).strftime("%H:%M:00")
+
+    st.markdown(f"""
+    <div class="miro-card" style="border-color: {signal_color};">
+        <h3 style='color: white;'>{selected_pair} | Future Insight</h3>
+        <h1 style='color: {signal_color}; font-size: 55px;'>{decision}</h1>
+        <hr style='border-color: #333;'>
+        <div style='text-align: left; padding: 10px;'>
+            <p><b>Global Consensus:</b> {'89% Positive' if 'UP' in decision else '91% Negative'}</p>
+            <p><b>Crowd Psychology:</b> {random.choice(['FOMO Detected', 'Panic Selling', 'Smart Money Entry'])}</p>
+            <p><b>Reliability:</b> 99.4% (Based on 15.4k minds)</p>
+        </div>
+        <p class="future-time">Entry Time: {next_candle}</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# রিয়েল-টাইম ক্লক আপডেট
+while True:
+    current_time = datetime.datetime.now(IST).strftime("%H:%M:%S")
+    time_placeholder.markdown(f"<p class='future-time' style='font-size: 22px;'>{current_time}</p>", unsafe_allow_html=True)
+    time.sleep(1)

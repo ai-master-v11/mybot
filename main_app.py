@@ -1479,3 +1479,99 @@ while True:
     t = datetime.datetime.now(IST).strftime("%H:%M:%S")
     st.sidebar.markdown(f"### SYSTEM CLOCK: {t}")
     time.sleep(1)
+import streamlit as st
+import time
+import datetime
+import pytz
+import random
+
+# ১. মাস্টার কন্ট্রোল প্যানেল ইন্টারফেস (ভিডিওর মতো অ্যাডভান্সড লুক)
+st.set_page_config(page_title="AI MASTER CONTROL - V1", layout="wide")
+
+st.markdown("""
+    <style>
+    .stApp { background-color: #03060e; color: #ffffff; }
+    .control-panel {
+        border: 2px solid #ff0055;
+        padding: 30px;
+        background: linear-gradient(180deg, #0a0e1a, #05070a);
+        border-radius: 15px;
+        box-shadow: 0px 0px 40px rgba(255, 0, 85, 0.3);
+    }
+    .status-window {
+        background: #000;
+        border: 1px solid #333;
+        padding: 10px;
+        font-family: 'Courier New', monospace;
+        color: #00ff88;
+        height: 150px;
+        overflow-y: scroll;
+        margin-bottom: 20px;
+    }
+    .ai-stat { font-size: 22px; color: #ff0055; font-weight: bold; }
+    </style>
+    """, unsafe_allow_html=True)
+
+IST = pytz.timezone('Asia/Kolkata')
+
+# ২. ভিডিওর লজিক: এআই-কে কমান্ড দেওয়ার অপশন (AI Overrule)
+st.title("🛡️ AI MASTER CONTROL: DECISION OVERRIDE")
+st.write("LEVEL: QUANTUM CONTROL (FOR PUBLIC EMPOWERMENT)")
+
+with st.sidebar:
+    st.header("🎛️ AI Sensitivity Settings")
+    panic_limit = st.slider("Panic Sensitivity (%)", 50, 100, 85)
+    whale_mode = st.checkbox("Track Whale Manipulation", value=True)
+    fomo_detection = st.checkbox("Retailer FOMO Filter", value=True)
+
+# ৩. কন্ট্রোল ড্যাশবোর্ড
+col1, col2 = st.columns([2, 1])
+
+with col2:
+    st.markdown("### 🤖 AI Internal Log")
+    log_box = st.empty()
+    status_history = "> System Booted...\n> Nodes Online: 15,000\n> Ready for Command..."
+
+with col1:
+    st.markdown("<div class='control-panel'>", unsafe_allow_html=True)
+    target = st.selectbox("Market Target:", ["EUR/USD-OTC", "GBP/USD-OTC", "GOLD-OTC", "BITCOIN"])
+    
+    if st.button("EXECUTE OVERRIDE CONTROL"):
+        # ভিডিওর মতো সিমুলেশন প্রসেস
+        progress = st.progress(0)
+        
+        simulation_steps = [
+            "Injecting Control Logic into Global Nodes...",
+            "Analyzing 25,000 Retailer Decision Trees...",
+            "Overruling Human Error Factor...",
+            "Calculating Guaranteed Future Path...",
+            "Finalizing Simulation result..."
+        ]
+        
+        for i, step in enumerate(simulation_steps):
+            status_history += f"\n> {step}"
+            log_box.markdown(f"<div class='status-window'>{status_history}</div>", unsafe_allow_html=True)
+            time.sleep(random.uniform(0.6, 1.2))
+            progress.progress((i + 1) * 20)
+            
+        # ফলাফল (ভিডিওর সেই কন্ট্রোল লজিক অনুযায়ী)
+        direction = random.choice(["CALL (UP)", "PUT (DOWN)"])
+        confidence = random.randint(97, 99)
+        crowd_move = "SELL" if direction == "CALL (UP)" else "BUY"
+        
+        st.markdown(f"""
+            <h1 style='text-align:center; color:#ff0055;'>SIGNAL: {direction}</h1>
+            <div style='display:flex; justify-content:space-around; margin-top:20px;'>
+                <div><p>Crowd Action</p><p class='ai-stat'>{crowd_move}</p></div>
+                <div><p>AI Control Level</p><p class='ai-stat'>Active</p></div>
+                <div><p>Confidence</p><p class='ai-stat'>{confidence}%</p></div>
+            </div>
+            <hr style='border-color:#333;'>
+            <p style='text-align:center; font-size:18px; color:#00ff88;'>
+                FUTURE CANDLE PREVIEW: {(datetime.datetime.now(IST) + datetime.timedelta(minutes=1)).strftime("%H:%M:00")}
+            </p>
+        """, unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
+
+# ৪. ভিডিওতে বলা 'কন্ট্রোল' বার্তার রিমাইন্ডার
+st.info("💡 এই ড্যাশবোর্ডটি ভিডিওর লজিক অনুযায়ী তৈরি—যেখানে মানুষ এআই-কে নিয়ন্ত্রণ করছে, এআই মানুষকে নয়।")

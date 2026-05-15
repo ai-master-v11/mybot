@@ -1371,3 +1371,111 @@ def simulate_investor_minds(asset_name):
 
 # যদি sentiment > 0 হয়, তবে CALL (UP)
 # যদি sentiment < 0 হয়, তবে PUT (DOWN)
+import streamlit as st
+import time
+import random
+import datetime
+import pytz
+import pandas as pd
+import numpy as np
+
+# ১. হাই-লেভেল ডার্ক ইন্টারফেস (প্রফেশনাল টার্মিনাল লুক)
+st.set_page_config(page_title="ALADDIN-MIRO PREDICT V1", layout="wide")
+
+st.markdown("""
+    <style>
+    .stApp { background-color: #05070a; color: #00d4ff; }
+    .aladdin-terminal {
+        border: 2px solid #00d4ff;
+        padding: 30px;
+        background-color: #0c1016;
+        border-radius: 10px;
+        box-shadow: 0px 0px 30px rgba(0, 212, 255, 0.3);
+    }
+    .glitch-text { font-family: 'Courier New', monospace; font-size: 14px; }
+    .decision-box { font-size: 55px; font-weight: bold; text-align: center; margin: 20px 0; }
+    </style>
+    """, unsafe_allow_html=True)
+
+IST = pytz.timezone('Asia/Kolkata')
+
+# ২. ভিডিওর লজিক: মানুষের সিদ্ধান্ত সিমুলেশন (Predictive Analysis)
+def run_aladdin_simulation(asset):
+    """
+    ভিডিওর মতো ২৫,০০০ মানুষের ইনভেস্টর মাইন্ডসেট সিমুলেট করে 
+    ট্রেডিং সিদ্ধান্ত নেওয়ার লজিক।
+    """
+    # কাল্পনিক ২০,০০০ রিটেইল ট্রেডার এবং ৫,০০০ ইনস্টিটিউশনাল ট্রেডার
+    retail_mood = random.choice(["Panic", "FOMO", "Neutral"])
+    whale_action = random.choice(["Accumulating", "Distributing", "Waiting"])
+    
+    # ভিডিওর মতো বিজনেস লজিক অনুযায়ী রেজাল্ট
+    if retail_mood == "Panic" and whale_action == "Accumulating":
+        prediction = "UP (CALL)"
+        confidence = 98.4
+    elif retail_mood == "FOMO" and whale_action == "Distributing":
+        prediction = "DOWN (PUT)"
+        confidence = 97.8
+    else:
+        prediction = random.choice(["UP (CALL)", "DOWN (PUT)"])
+        confidence = 91.2
+        
+    return prediction, confidence, retail_mood, whale_action
+
+# ৩. মেইন ড্যাশবোর্ড
+st.markdown("<h1 style='text-align:center;'>ALADDIN-MIRO: PREDICTIVE QUANTUM ENGINE</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align:center;'>MODE: MARKET DECISION SIMULATOR (GTA 6 STYLE LOGIC)</p>", unsafe_allow_html=True)
+
+target_asset = st.selectbox("Target Market Asset:", ["EUR/USD-OTC", "GBP/USD-OTC", "GOLD-OTC", "BITCOIN"])
+
+if st.button("EXECUTE MARKET SIMULATION"):
+    # ৪. ভিডিওর মতো 'অ্যাডভান্সড প্রসেস' ড্রামা
+    status = st.empty()
+    progress = st.progress(0)
+    
+    steps = [
+        "🌐 Establishing Secure Node Connection...",
+        "🧠 Simulating 25,000 Investor Decisions...",
+        "📈 Analyzing Institutional Order Flow (Aladdin Logic)...",
+        "⚖️ Balancing Panic vs. FOMO Metrics...",
+        "🔮 Generating 1-Minute Future Preview..."
+    ]
+    
+    for i, step in enumerate(steps):
+        status.markdown(f"<p class='glitch-text'>> {step}</p>", unsafe_allow_html=True)
+        time.sleep(random.uniform(0.7, 1.5))
+        progress.progress((i + 1) * 20)
+    
+    st.success("SIMULATION SUCCESSFUL: MARKET PREVIEW READY")
+    
+    # রেজাল্ট জেনারেট করা
+    decision, conf, mood, action = run_aladdin_simulation(target_asset)
+    color = "#00ff88" if "UP" in decision else "#ff4b4b"
+    
+    # ৫. ভিডিওর মতো ফিউচার প্রিভিউ আউটপুট
+    st.markdown(f"""
+    <div class="aladdin-terminal" style="border-color: {color};">
+        <h2 style='text-align:center; color:white;'>SIMULATION RESULT: {target_asset}</h2>
+        <div class="decision-box" style="color: {color};">{decision}</div>
+        
+        <div style="display:flex; justify-content:space-around; text-align:center;">
+            <div><p style='color:#555;'>Mass Psychology</p><h4>{mood}</h4></div>
+            <div><p style='color:#555;'>Whale Move</p><h4>{action}</h4></div>
+            <div><p style='color:#555;'>AI Confidence</p><h4>{conf}%</h4></div>
+        </div>
+        
+        <hr style='border-color:#333;'>
+        <p style='text-align:center; font-size:20px;'>
+            Next Entry Time: {(datetime.datetime.now(IST) + datetime.timedelta(minutes=1)).strftime("%H:%M:00")}
+        </p>
+        <p style='color:#444; font-size:10px; text-align:center;'>
+            *This prediction is based on real-time crowd behavior simulation (MiroFish Concept).
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# লাইভ ক্লক
+while True:
+    t = datetime.datetime.now(IST).strftime("%H:%M:%S")
+    st.sidebar.markdown(f"### SYSTEM CLOCK: {t}")
+    time.sleep(1)

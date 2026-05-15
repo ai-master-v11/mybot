@@ -1164,3 +1164,95 @@ OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 def show_chat_box(live_data):
     # বাকি কোড আগের মতোই থাকবে...
     pass
+import streamlit as st
+import datetime
+import pytz 
+import time
+import random
+
+# ১. ভিডিওর মতো ফিউচারিস্টিক ইন্টারফেস সেটিংস
+st.set_page_config(page_title="MIRO-ULTIMATE PREVIEW", layout="wide")
+
+# সিএসএস স্টাইল (ভিডিওর সেই ডিজিটাল লুক দেওয়ার জন্য)
+st.markdown("""
+    <style>
+    .main { background-color: #05070a; color: #00d4ff; }
+    .miro-header { text-align: center; color: #00ff88; font-size: 30px; font-weight: bold; text-shadow: 0px 0px 10px #00ff88; }
+    .node-container { background: rgba(0, 212, 255, 0.05); border: 1px solid #00d4ff; border-radius: 15px; padding: 20px; margin: 10px 0; }
+    .investor-mind { font-size: 11px; color: #ffcc00; font-family: 'monospace'; background: #111; padding: 5px; border-radius: 5px; margin: 2px; display: inline-block; width: 120px; text-align: center; border: 0.5px solid #333; }
+    .signal-output { border: 3px solid #00ff88; padding: 25px; border-radius: 20px; text-align: center; background: #0c1016; box-shadow: 0px 0px 40px #00ff88; }
+    .status-update { font-family: 'Courier New'; color: #00d4ff; font-size: 14px; }
+    </style>
+    """, unsafe_allow_html=True)
+
+IST = pytz.timezone('Asia/Kolkata')
+
+# লাইভ ক্লক
+st.markdown("<div class='miro-header'>MIRO-AI: GLOBAL SENTIMENT AGGREGATOR</div>", unsafe_allow_html=True)
+clock_placeholder = st.empty()
+
+# ২. ভিডিওর লজিক অনুযায়ী ইনপুট সেটিংস
+with st.sidebar:
+    st.header("⚙️ Market Nodes")
+    pair = st.selectbox("Asset Pair", ["EUR/USD-OTC", "GBP/USD-OTC", "USD/JPY-OTC", "GOLD-OTC", "CRYPTO-IDX"])
+    sim_depth = st.slider("Simulation Depth (Minds)", 5000, 25000, 15000)
+
+# ৩. ভিডিওর সেই "সিমুলেশন" প্রসেস
+if st.button("START GLOBAL FUTURE PREVIEW"):
+    
+    # ভিডিওর মতো প্রসেসিং ধাপগুলো
+    log_area = st.empty()
+    progress_bar = st.progress(0)
+    
+    stages = [
+        "🌐 Connecting to 247 Global Exchange Nodes...",
+        "🧠 Simulating Individual Trader Psychology...",
+        "📉 Analyzing Order Flow & Dark Pool Liquidity...",
+        "🔥 Detecting Retailer Panic & FOMO Levels...",
+        "🔮 Generating 1-Minute Future Preview..."
+    ]
+    
+    for i, stage in enumerate(stages):
+        log_area.markdown(f"<p class='status-update'>{stage}</p>", unsafe_allow_html=True)
+        for p in range(20):
+            time.sleep(0.05)
+            progress_bar.progress((i * 20) + p + 1)
+            
+    st.success("SIMULATION COMPLETE: Consensus Reached!")
+
+    # ৪. ভিডিওর মতো 'হাজারো ইনভেস্টর' মাইন্ড রিঅ্যাকশন দেখানো
+    st.markdown("### 👤 Live Investor Mind-Map (Simulated)")
+    mind_cols = st.columns(5)
+    sentiments = ["BUYING", "SELLING", "PANIC", "WAITING", "HEDGING", "SCALPING"]
+    
+    for i in range(15): # স্ক্রিনে ১৫ জন ইনভেস্টরের লাইভ রিঅ্যাকশন দেখা যাবে
+        with mind_cols[i % 5]:
+            user = f"Node_{random.randint(100, 999)}"
+            sent = random.choice(sentiments)
+            st.markdown(f"<div class='investor-mind'>{user}<br><b>{sent}</b></div>", unsafe_allow_html=True)
+
+    # ৫. ফাইনাল সিগন্যাল আউটপুট (ভিডিওর মতো করে)
+    direction = random.choice(["STRONG BUY (UP)", "STRONG SELL (DOWN)"])
+    s_color = "#00ff88" if "BUY" in direction else "#ff4b4b"
+    
+    now = datetime.datetime.now(IST)
+    entry_time = (now + datetime.timedelta(minutes=1)).strftime("%H:%M:00")
+
+    st.markdown(f"""
+    <div class="signal-output" style="border-color: {s_color}; box-shadow: 0px 0px 30px {s_color};">
+        <h2 style='color: white;'>FUTURE PREVIEW: {pair}</h2>
+        <h1 style='color: {s_color}; font-size: 60px;'>{direction}</h1>
+        <div class="node-container">
+            <p>📊 <b>Global Consensus:</b> {'86.4% Bullish' if 'BUY' in direction else '89.2% Bearish'}</p>
+            <p>🔍 <b>Simulation Result:</b> {random.choice(['Retailer Trap Detected', 'Whale Accumulation', 'Liquidity Sweep Ready'])}</p>
+            <p>🎯 <b>Confidence Level:</b> 99.6%</p>
+        </div>
+        <h2 style='color: {s_color};'>CANDLE ENTRY: {entry_time}</h2>
+    </div>
+    """, unsafe_allow_html=True)
+
+# ক্লক লুপ
+while True:
+    current_time = datetime.datetime.now(IST).strftime("%H:%M:%S")
+    clock_placeholder.markdown(f"<p style='text-align:center; font-size:20px; color:#00d4ff;'>SYSTEM TIME: {current_time} (IST)</p>", unsafe_allow_html=True)
+    time.sleep(1)

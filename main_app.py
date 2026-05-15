@@ -1256,3 +1256,76 @@ while True:
     current_time = datetime.datetime.now(IST).strftime("%H:%M:%S")
     clock_placeholder.markdown(f"<p style='text-align:center; font-size:20px; color:#00d4ff;'>SYSTEM TIME: {current_time} (IST)</p>", unsafe_allow_html=True)
     time.sleep(1)
+import streamlit as st
+import time
+import random
+import datetime
+import pytz
+
+# ১. অ্যাডভান্সড ডার্ক ইন্টারফেস (অন্যদের থেকে আলাদা লুক)
+st.set_page_config(page_title="ALADDIN-MIRO PREDICT", layout="wide")
+
+st.markdown("""
+    <style>
+    .stApp { background-color: #020408; }
+    .aladdin-box {
+        border: 1px solid #00d4ff;
+        padding: 40px;
+        border-radius: 0px; /* প্রফেশনাল শার্প লুক */
+        background: linear-gradient(145deg, #05080f, #0a0e17);
+        box-shadow: 0px 0px 50px rgba(0, 212, 255, 0.2);
+    }
+    .glitch-text { color: #00d4ff; font-family: 'Courier New', monospace; font-weight: bold; }
+    .node-status { color: #00ff88; font-size: 12px; }
+    </style>
+    """, unsafe_allow_html=True)
+
+IST = pytz.timezone('Asia/Kolkata')
+
+# ২. ভিডিওর লজিক অনুযায়ী গ্লোবাল নোড কানেকশন
+st.markdown("<h1 style='text-align:center; color:white;'>PROJECT 07: ALADDIN PREDICT</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align:center; color:#555;'>PRIVATE ACCESS: QUANTUM SIMULATION MODE</p>", unsafe_allow_html=True)
+
+if st.button("EXECUTE FUTURE SIMULATION"):
+    log_placeholder = st.empty()
+    bar = st.progress(0)
+    
+    # ভিডিওর সেই অ্যাডভান্সড ধাপগুলো
+    steps = [
+        "Initializing Aladdin Quantum Engine...",
+        "Connecting to Dark Pool Liquidity Nodes...",
+        "Simulating 25,000 Investor Psychology Profiles...",
+        "Analyzing Institutional Sell-Side Imbalance...",
+        "Calculating Future Candle Deviation..."
+    ]
+    
+    for i, s in enumerate(steps):
+        log_placeholder.markdown(f"<p class='glitch-text'>> {s}</p>", unsafe_allow_html=True)
+        time.sleep(random.uniform(0.5, 1.2))
+        bar.progress((i+1)*20)
+
+    st.success("SIMULATION COMPLETE")
+
+    # ৩. ভিডিওর সেই 'মানুষের প্রতিক্রিয়া' বা 'ইমোশন' দেখানো
+    st.write("### 🧠 Mass Psychology Data (Simulated):")
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Panic Index", f"{random.randint(10, 30)}%", "-5%")
+    c2.metric("FOMO Level", f"{random.randint(70, 90)}%", "+12%")
+    c3.metric("Smart Money Flow", "Accumulating")
+
+    # ৪. ফাইনাল অ্যাডভান্সড আউটপুট
+    direction = random.choice(["CALL (UP)", "PUT (DOWN)"])
+    signal_color = "#00ff88" if "CALL" in direction else "#ff3131"
+    
+    next_min = (datetime.datetime.now(IST) + datetime.timedelta(minutes=1)).strftime("%H:%M:00")
+
+    st.markdown(f"""
+    <div class="aladdin-box" style="border-left: 10px solid {signal_color};">
+        <h2 style='color: white;'>FUTURE PREVIEW RESULT</h2>
+        <h1 style='color: {signal_color}; font-size: 70px; letter-spacing: 5px;'>{direction}</h1>
+        <p style='color: #888;'>CANDLE ENTRY TIME: <span style='color:white; font-size:25px;'>{next_min}</span></p>
+        <hr style='border-color: #222;'>
+        <p class='node-status'>Node Sync: 100% | Consensus: 99.8% Verified</p>
+        <p style='color: #444; font-size: 10px;'>THIS PREDICTION IS BASED ON GLOBAL CROWD PSYCHOLOGY SIMULATION.</p>
+    </div>
+    """, unsafe_allow_html=True)

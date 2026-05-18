@@ -1907,3 +1907,132 @@ elif menu == "8. Evaluation & Data Collection Milestone":
         st.success(f"🎯 MILESTONE ACHIEVED: আপনি অ্যাকাউন্টের ৩ নম্বর সপ্তাহে আছেন। উমর আশরাফের শেষ পরামর্শ—'Never quit, lock in your price action, and let micro changes compound over time.'")
     else:
         st.info("📈 Keep collecting data. যখনই লস হবে, স্ট্র্যাটেজি পরিবর্তন না করে সিস্টেমেটিক্যালি ডেটা অ্যানালাইসিস করুন।")
+import streamlit as st
+import pandas as pd
+import numpy as np
+
+st.set_page_config(page_title="Umar Ashraf Masterclass - Part 1", layout="wide")
+
+st.title("💎 Project 07: Umar Ashraf $30M+ Masterclass (Part 1)")
+st.markdown("### ১৫ জন ট্রেইডারের প্রতিটি সুক্ষ্ম ভুল এবং উমরের দেওয়া লাইভ সলিউশন ইঞ্জিন")
+st.write("---")
+
+# ভিডিওর প্রথম ১ ঘণ্টার প্রতিটি কেস স্টাডি এবং রুলস এখানে যুক্ত করা হয়েছে
+menu = st.sidebar.radio("Select Audit Case Study", [
+    "Case 1: The 100-Trades Overtrading Sickness",
+    "Case 2: The Negative Month Accumulation Trap",
+    "Case 3: Prop Firm Fee Model vs Evaluation Reality",
+    "Case 4: Inconsistent Position Sizing (Oversizing)",
+    "Case 5: The B-Minus Setup Filter Law",
+    "Case 6: Risk-to-Reward (R:R) Math Over Win-Rate"
+])
+
+# ------------------------------------------------------------------
+# CASE 1: THE 100-TRADES OVERTRADING SICKNESS
+# ------------------------------------------------------------------
+if menu == "Case 1: The 100-Trades Overtrading Sickness":
+    st.header("🚫 Case 1: Overtrading & Random Execution Audit")
+    st.info("ভিডিওর লজিক (00:00:00 - 00:05:00): ট্রেইডাররা দিনে ১০০টি পর্যন্ত ট্রেড নেয়। উমরের উক্তি: কোনো মানুষের পক্ষে ১টি ট্রেডে ঢুকে, পরবর্তী মুভ কী হবে তা ডিসাইড করে, আবার ২য় ট্রেডে ঢোকা সম্ভব নয়। এটি স্রেফ অন্ধের মতো নেওয়া র‍্যান্ডম ট্রেড।")
+    
+    trades_count = st.number_input("আজকে নেওয়া মোট ট্রেডের সংখ্যা দিন:", min_value=0, max_value=200, value=5)
+    
+    st.write("---")
+    if trades_count > 30:
+        st.error(f"🚨 CRITICAL SYSTEM LOCK ({trades_count} Trades DETECTED): আপনি হিউম্যান ক্যাপাসিটির বাইরে গিয়ে জুয়া খেলছেন। উমরের নির্দেশ: 'Stop immediately, you are burning cash'.")
+    elif trades_count > 5:
+        st.warning(f"⚠️ HIGH VOLUME WARNING ({trades_count} Trades): আপনি মার্কেটে জোর করে সুযোগ খুঁজছেন (Forcing Setups)।")
+    else:
+        st.success("✅ OPTIMAL EXECUTION: আপনার ট্রেড সংখ্যা নিয়ন্ত্রিত এবং লজিক্যাল।")
+
+# ------------------------------------------------------------------
+# CASE 2: THE NEGATIVE MONTH ACCUMULATION TRAP
+# ------------------------------------------------------------------
+elif menu == "Case 2: The Negative Month Accumulation Trap":
+    st.header("🧠 Case 2: Revenge Trading & Loss Accumulation")
+    st.info("ভিডিওর লজিক (00:09:11 - 00:10:00): ট্রেইডার জেলা (TradeZella) অ্যাপ খোলার পর দেখা যায়, কোনো মাস নেগেটিভ গেলেই ট্রেইডাররা আরও বেশি লস জমাতে থাকে। কারণ তারা ওই লস দ্রুত রিকভার করার চেষ্টা করে।")
+    
+    loss_amount = st.number_input("আপনার বর্তমান ড্রডাউন বা লস কত? ($)", min_value=0, value=0)
+    recovery_mindset = st.checkbox("আপনি কি এই লস আজকেই বা এই সপ্তাহেই তুলে আনার কথা ভাবছেন?")
+    
+    st.write("---")
+    if loss_amount > 0 and recovery_mindset:
+        st.error("🚨 REVENGE TRADING TRAP: উমর আশরাফের রুল—'Disconnect from previous periods immediately'. আপনি লস রিকভারির ইমোশন নিয়ে ট্রেড করছেন, যা অ্যাকাউন্ট ওড়াবে।")
+        st.code("Recommended Action: Close all terminals. Take a 24-hour mental break.")
+    else:
+        st.success("✅ STABLE MINDSET: আপনি অতীতের লস দ্বারা প্রভাবিত না হয়ে ফ্রেশ মাইন্ডে চার্ট দেখছেন।")
+
+# ------------------------------------------------------------------
+# CASE 3: PROP FIRM FEE MODEL VS EVALUATION REALITY
+# ------------------------------------------------------------------
+elif menu == "Case 3: Prop Firm Fee Model vs Evaluation Reality":
+    st.header("🏢 Case 3: Prop Firm Business Model & Target Pressure")
+    st.info("ভিডিওর লজিক (00:00:31): প্রপ ফার্মগুলোর মূল বিজনেস মডেল তৈরি হয় ট্রেইডারদের ফেইলিয়র এবং তাদের দেওয়া ফি (Fees) থেকে। তারা চায় আপনি প্রেশারে পড়ে রুলস ভাঙুন।")
+    
+    fee_paid = st.number_input("Prop Firm Challenge Fee ($)", min_value=0, value=100)
+    target_pressure = st.slider("Evaluation Target Pressure Level (%)", 0, 100, 50)
+    
+    st.write("---")
+    if target_pressure > 70:
+        st.error("🚨 RISK ALERT: আপনি প্রপ ফার্মের সেট করা টার্গেটের ফাঁদে পা দিচ্ছেন। উমরের পরামর্শ: 'Your job is not to make money right now, your job is to get data, get good, and get better over 2-3 years'.")
+    else:
+        st.success("✅ SYSTEMATIC TRADING: আপনি টার্গেটের পেছনে না ছুটে নিজের ড্যাশবোর্ডের ডেটা তৈরিতে ফোকাস করছেন।")
+
+# ------------------------------------------------------------------
+# CASE 4: INCONSISTENT POSITION SIZING (OVERSIZING)
+# ------------------------------------------------------------------
+elif menu == "Case 4: Inconsistent Position Sizing (Oversizing)":
+    st.header("⚖️ Case 4: The Inconsistent Sizing & Account Crushing Rule")
+    st.info("ভিডিওর লজিক (00:15:38 - 00:20:00): ট্রেইডারদের লস হওয়ার বড় কারণ তারা সাইজ এক রাখে না। ১ বা ২ ট্রেডে ওভারসাইজ (Oversize) করে এবং সেই লটের লসে পুরো অ্যাকাউন্ট ক্রাশ হয়ে যায়।")
+    
+    standard_lot = st.number_input("Your Standard Lot Size / Risk Per Trade ($)", min_value=0.1, value=10.0)
+    current_trade_lot = st.number_input("Current Trade Lot Size / Risk ($)", min_value=0.1, value=10.0)
+    
+    st.write("---")
+    if current_trade_lot > (standard_lot * 1.5):
+        st.error(r"$$Risk\ Current > 1.5 \times Risk\ Standard$$")
+        st.error("🚨 OVERSIZING DETECTED: উমরের রুল—আপনি একটি বা দুটি ট্রেডে অতিরিক্ত লট নিয়ে জুয়া খেলছেন। এটি আপনার আগের সব ভালো ট্রেডের প্রফিট খেয়ে ফেলবে।")
+    else:
+        st.success("✅ CONSISTENCY MAINTAINED: আপনার পজিশন সাইজিং একদম নিয়মমাফিক স্ট্যাবল আছে।")
+
+# ------------------------------------------------------------------
+# CASE 5: THE B-MINUS SETUP FILTER LAW
+# ------------------------------------------------------------------
+elif menu == "Case 5: The B-Minus Setup Filter Law":
+    st.header("🚫 Case 5: Eliminating B-Minus & Garbage Setups")
+    st.info("ভিডিওর লজিক (00:15:57): ট্রেইডাররা ক্রাশড হয় কারণ তারা কনসিস্টেন্ট সাইজ রাখার পাশাপাশি 'B-Minus' বা দুর্বল সেটআপগুলোতেও এন্ট্রি নিয়ে নেয়। তারা ১টি ভালো ট্রেডে জেতে আর ২টি ফালতু ট্রেডে হারে।")
+    
+    setup_grade = st.selectbox("আপনার বর্তমান সেটআপটির গ্রেড কেমন?", ["A+ Setup (Perfect Confluence)", "B- Setup (Average/Chop)", "C Setup (Random/FOMO)"])
+    
+    st.write("---")
+    if setup_grade == "B- Setup (Average/Chop)":
+        st.warning("⚠️ FILTER ACTIVED: উমর আশরাফের রুল—'Taking B-minus setups will crush you'. এই সেটআপে আপনার ২৬টি ফাইলের স্ট্রং কনফ্লুয়েন্স নেই। লট সাইজ ৫০% কমান অথবা নো-ট্রেডিং ডে পালন করুন।")
+    elif setup_grade == "C Setup (Random/FOMO)":
+        st.error("🚨 TRADE REJECTED: এটি সম্পূর্ণ ইমোশনাল এবং ফালতু সেটআপ। এন্ট্রি নিষিদ্ধ।")
+    else:
+        st.success("💎 ELITE A+ SETUP: আপনার ব্যাক-ডেটা অনুযায়ী এটি একটি হাই-প্রোবাবিলিটি ট্রেড।")
+
+# ------------------------------------------------------------------
+# CASE 6: RISK-TO-REWARD (R:R) MATH OVER WIN-RATE
+# ------------------------------------------------------------------
+elif menu == "Case 6: Risk-to-Reward (R:R) Math Over Win-Rate":
+    st.header("📊 Case 6: The Mathematical Core Shift (Win% vs R:R)")
+    st.info("ভিডিওর লজিক (00:23:10): উমর আশরাফের সবচেয়ে পাওয়ারফুল স্টেটমেন্ট—'Shift away from win percentage, because that doesn't matter'. ৪০% উইন রেট + ১:৩ R:R আপনাকে ধনী বানাবে, কিন্তু ৮০% উইন রেট + ব্যাড রিস্ক ম্যানেজমেন্ট আপনাকে দেউলিয়া করবে।")
+    
+    col_w1, col_w2 = st.columns(2)
+    with col_w1:
+        user_win_rate = st.slider("Select Win Rate Percentage (%)", 10, 90, 40)
+    with col_w2:
+        user_rr = st.slider("Select Reward Ratio (1:X)", 1.0, 5.0, 3.0)
+        
+    # গাণিতিক ফর্মুলা (Expected Value Calculator)
+    loss_rate = 100 - user_win_rate
+    expected_value = (user_win_rate / 100 * user_rr) - (loss_rate / 100 * 1)
+    
+    st.write("---")
+    st.markdown("#### Expected Value Simulation Matrix:")
+    st.latex(r"Expectancy = (Win\% \times R:R) - (Loss\% \times 1)")
+    
+    if expected_value > 0:
+        st.success(f"💎 POSITIVE MODEL ({expected_value:.2f}): উমরের কথা অনুযায়ী এই ম্যাথমেটিক্স গ্যারান্টেড প্রফিট দেবে। উইন রেট কম হলেও আপনার রিওয়ার্ড রেশিও আপনাকে বাঁচিয়ে রাখছে।")
+    else:
+        st.error(f"❌ DESTRICTIVE MODEL ({expected_value:.2f}): সাবধান! আপনার ১টি লসের সাইজ লাভের চেয়ে বড়। এই মডেল লং-টার্মে অ্যাকাউন্ট জিরো করবেই।")

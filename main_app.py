@@ -1641,3 +1641,97 @@ if st.button("ACTIVATE QUANTUM SCAN"):
 st.markdown("</div>", unsafe_allow_html=True)
 
 st.info("💡 এই সিস্টেমটি স্ক্রিনশটের সেই স্বয়ংক্রিয় এআই কন্ট্রোল কনসেপ্টে তৈরি, যা নিজে থেকে ডাটা বিশ্লেষণ করে ফলাফল দেয়।")
+import streamlit as st
+import pandas as pd
+import datetime
+
+# ভিডিওর মূল ফিলোসফি: "The job is not to make money; your job is to get data and get better."
+st.set_page_config(page_title="Project 07: Umar Ashraf Masterclass Dashboard", layout="wide")
+
+st.title("🚀 Project 07: Elite Trader Psychology & Risk Engine")
+st.markdown("### Powered by Umar Ashraf's $30M+ Verified Masterclass Insights")
+st.write("---")
+
+# ভিডিওর কোর কনসেপ্টগুলোর ওপর ভিত্তি করে ৩টি প্রধান সেকশন
+tab1, tab2, tab3 = st.tabs(["📊 Risk & Win-Rate Simulator", "🧠 Psychological Journaling", "🚫 Anti-Overtrading Guard"])
+
+# ------------------------------------------------------------------
+# TAB 1: RISK & WIN-RATE SIMULATOR (উইনার রেটের চেয়ে রিস্ক রেট বড়)
+# ------------------------------------------------------------------
+with tab1:
+    st.header("Risk-to-Reward (R:R) b/w Win-Rate Matrix")
+    st.info("ভিডিওর মূল শিক্ষা: ৮০% উইন রেট নিয়েও অ্যাকাউন্ট জিরো হতে পারে যদি ১টি বড় লস সব খেয়ে ফেলে। কিন্তু ৪০% উইন রেট + ১:৩ R:R থাকলে আপনি প্রফিটেবল থাকবেন।")
+    
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        starting_capital = st.number_input("Starting Capital ($)", value=1000)
+        total_trades_sim = st.slider("Total Trades to Simulate", 10, 100, 20)
+    with col2:
+        win_rate = st.slider("Your Win Rate (%)", 10, 90, 40)
+    with col3:
+        risk_reward_ratio = st.slider("Risk-to-Reward Ratio (1:X)", 1.0, 5.0, 3.0)
+
+    # ম্যাথমেটিক্যাল ক্যালকুলেশন (LaTeX ফরম্যাটে ম্যাথ সিমুলেশন)
+    # Expected Return Formula: $$E = (Win\% \times Reward) - (Loss\% \times Risk)$$
+    st.markdown("#### Simulation Math Formula:")
+    st.latex(r"Expected\ Return = (Win\% \times R:R) - (Loss\% \times 1)")
+    
+    calculated_wins = int((win_rate / 100) * total_trades_sim)
+    calculated_losses = total_trades_sim - calculated_wins
+    
+    # ধরি প্রতি ট্রেডে রিস্ক ১% (অর্থাৎ ১০০০ ডলারের ১০ ডলার)
+    risk_per_trade = starting_capital * 0.01 
+    total_profit = (calculated_wins * risk_per_trade * risk_reward_ratio) - (calculated_losses * risk_per_trade)
+    final_balance = starting_capital + total_profit
+    
+    st.write("---")
+    sc1, sc2, sc3 = st.columns(3)
+    sc1.metric("Simulated Wins", f"{calculated_wins} Trades")
+    sc2.metric("Simulated Losses", f"{calculated_losses} Trades")
+    if total_profit >= 0:
+        sc3.metric("Projected Net Profit/Loss", f"+${total_profit:.2f}", delta="PROFITABLE")
+    else:
+        sc3.metric("Projected Net Profit/Loss", f"-${abs(total_profit):.2f}", delta="UNPROFITABLE", delta_color="inverse")
+
+# ------------------------------------------------------------------
+# TAB 2: PSYCHOLOGICAL JOURNALING (প্রাক ও পোস্ট মার্কেট ব্রেন ট্র্যাকিং)
+# ------------------------------------------------------------------
+with tab2:
+    st.header("Pre-Market & Post-Market Self-Mastery Journal")
+    st.warning("উমর আশরাফের টিপস: জার্নালিং মানে শুধু এন্ট্রি-এক্সিট নয়, এটি আপনার ইমোশন এবং ডেইলি গোল ট্র্যাক করার হাতিয়ার।")
+    
+    st.subheader("☀️ Step 1: Pre-Market Mental Check (ট্রেড শুরুর আগে)")
+    col_j1, col_j2 = st.columns(2)
+    with col_j1:
+        mood = st.selectbox("How are you feeling right now mentally?", ["Calm & Focused", "Anxious/Stressed", "Overconfident", "Tired/Distracted"])
+    with col_j2:
+        daily_goal = st.text_input("What is your single main weakness from yesterday that you want to fix today?")
+        
+    st.subheader("🌙 Step 2: Post-Market Review (দিনশেষে)")
+    col_j3, col_j4 = st.columns(2)
+    with col_j3:
+        biggest_mistake = st.selectbox("What was your biggest mistake today?", ["None - Followed Rules", "Overtrading", "FOMO Entry", "Revenge Trading/Oversizing", "Moved Stop Loss"])
+    with col_j4:
+        best_decision = st.text_area("What was your best execution or decision today?")
+
+    if st.button("Save Today's Journal Data"):
+        st.success("Journal Log Saved! 'Let price dictate your actions, not your emotions.'")
+
+# ------------------------------------------------------------------
+# TAB 3: ANTI-OVERTRADING GUARD (দিনে ১০০ ট্রেড করার রোগ মুক্তির লজিক)
+# ------------------------------------------------------------------
+with tab3:
+    st.header("The A+ Setup Restrictions & Strict Guardrail")
+    st.error("ভিডিওর স্ট্রাকচার রুল: মাসে ২০ দিন ট্রেডিংয়ের সুযোগ থাকলে, বড় রিস্ক বা A+ সাইজ শুধু ৫ বা ৬ দিন নেওয়ার অনুমতি আছে। বাকি দিনগুলোতে রেস্ট।")
+    
+    allowed_a_plus_days = 6
+    used_days = st.slider("How many A+ Size days have you already used this month?", 0, 20, 2)
+    remaining_days = allowed_a_plus_days - used_days
+    
+    st.write("---")
+    if remaining_days > 0:
+        st.metric("Remaining A+ Setup Allowed Days This Month", f"{remaining_days} Days Left", "SAFE TO SCAN")
+        st.info("আপনার মেইন কন্ডিশন: শুধুমাত্র হাই-কনফ্লুয়েন্স (High-Confluence) ২৬টি ফাইলের সিগন্যাল ম্যাচ করলেই ট্রেড এক্সিকিউট করবেন, অন্যথায় নো-ট্রেডিং ডে।")
+    else:
+        st.metric("Remaining A+ Setup Allowed Days This Month", "0 Days Left", "STOP TRADING", delta_color="inverse")
+        st.error("🚨 ALERT: আপনার এই মাসের বড় ট্রেড নেওয়ার কোটা শেষ! জোর করে B- বা C গ্রেডের ট্রেড নিয়ে জমানো টাকা নষ্ট করবেন না।")

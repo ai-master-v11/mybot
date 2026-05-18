@@ -2265,3 +2265,24 @@ elif menu_part3 == "Rule 5: The Ultimate Vision (Never Quit Contract)":
     if sign_contract:
         st.balloons()
         st.success("🔥 CONTRACT SIGNED. LOCK IN, MASUM! 'Project 07: The Elite Hunt' ইজ নাও ফুলি প্রোটেক্টেড বাই উমর আশরাফ সাইকোলজি ইঞ্জিন।")
+# ------------------------------------------------------------------
+# EXTRA INSIGHTS: THE MICRO-RULES OF UMAR ASHRAF (FINAL AUDIT)
+# ------------------------------------------------------------------
+def umar_ashraf_final_leak_check(daily_loss_streak, capital_allocation, option_trade_intent):
+    """
+    ২ ঘণ্টা ৫০ মিনিটের ভিডিওর শেষ ৩টি সুক্ষ্ম শর্ত (যা ড্যাশবোর্ডে গার্ডরেল হিসেবে কাজ করবে)
+    """
+    # ১. অপশন ট্রেডিং সতর্কবার্তা (ভিডিওর টাইমলাইন: 00:00:44) -> "Stay away from options, just don't trade options"
+    if option_trade_intent == True:
+        st.error("🚨 UMAR'S WARNING: অপশন ট্রেডিং থেকে সম্পূর্ণ দূরে থাকুন! এটি হাইলি ম্যানিপুলেটিভ এবং ইমোশন কন্ট্রোল করা অসম্ভব।")
+        
+    # ২. ড্রডাউন পিরিয়ড লিমিট (ভিডিওর টাইমলাইন: 00:09:11) -> লস চলাকালীন ক্যাপিটাল সাইজ অটো-রিডাকশন
+    if daily_loss_streak >= 3:
+        st.error("🚨 DROP-DOWN RULE ACTIVATED: আপনি টানা ৩টি ট্রেডে লস করেছেন। উমরের রুল অনুযায়ী পরবর্তী ২৪ ঘণ্টা আপনার লট সাইজ অটোমেটিক ০.২৫% (মিনিমাম) হয়ে যাবে।")
+        capital_allocation = capital_allocation * 0.25
+        
+    # ৩. ডাটা ওভার মানি ফিলোসফি (ভিডিওর টাইমলাইন: 00:00:39) -> প্রথম ২-৩ বছর শুধু ডাটা জমানো
+    st.sidebar.markdown("---")
+    st.sidebar.info("💡 **Umar's Golden Axiom:** 'The job is not to make money; your job is to get data, get good, get better over 2-3 years.'")
+    
+    return capital_allocation

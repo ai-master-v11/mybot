@@ -2036,3 +2036,115 @@ elif menu == "Case 6: Risk-to-Reward (R:R) Math Over Win-Rate":
         st.success(f"💎 POSITIVE MODEL ({expected_value:.2f}): উমরের কথা অনুযায়ী এই ম্যাথমেটিক্স গ্যারান্টেড প্রফিট দেবে। উইন রেট কম হলেও আপনার রিওয়ার্ড রেশিও আপনাকে বাঁচিয়ে রাখছে।")
     else:
         st.error(f"❌ DESTRICTIVE MODEL ({expected_value:.2f}): সাবধান! আপনার ১টি লসের সাইজ লাভের চেয়ে বড়। এই মডেল লং-টার্মে অ্যাকাউন্ট জিরো করবেই।")
+import streamlit as st
+import pandas as pd
+import datetime
+
+# ২ ঘণ্টা ৫০ মিনিটের মাস্টারক্লাসের দ্বিতীয় গুরুত্বপূর্ণ ধাপ (Part 2)
+st.title("💎 Project 07: Umar Ashraf Masterclass (Part 2)")
+st.markdown("### Core Strategy, Position Restrictions & Market Bias Guardrail")
+st.write("---")
+
+# ভিডিওর দ্বিতীয় অংশের নিখুঁত লজিক্যাল ব্রেকডাউন
+menu_part2 = st.sidebar.radio("Select Strategy Node", [
+    "Rule 1: Fixed Monthly Trading Restrictions",
+    "Rule 2: The B-Minus Trade Sizing Filter",
+    "Rule 3: Price Action vs Market Economy Bias",
+    "Rule 4: Scalping vs High-Confluence Structure",
+    "Rule 5: Pre-Market Mental Baseline Setup"
+])
+
+# ------------------------------------------------------------------
+# RULE 1: FIXED MONTHLY TRADING RESTRICTIONS
+# ------------------------------------------------------------------
+if menu_part2 == "Rule 1: Fixed Monthly Trading Restrictions":
+    st.header("📅 Monthly Restrictions on A+ Position Sizes")
+    st.info("ভিডিওর লজিক (00:10:32 - 00:11:00 / 00:20:15): উমর আশরাফ বলেছেন, মাসে যদি ২০টি ট্রেডিং দিন থাকে, তবে নিজেকে একটি কঠিন শৃঙ্খলায় বাঁধতে হবে। আপনি সব দিন বড় লট বা A+ সাইজ নিতে পারবেন না। পুরো মাসে সর্বোচ্চ ৫ থেকে ৬ দিন আপনি A+ সাইজ ব্যবহারের অনুমতি পাবেন।")
+    
+    allowed_a_plus_days = st.slider("Total Allowed A+ Size Days per Month", 1, 10, 6)
+    used_days_this_month = st.number_input("How many A+ Size days have you used so far?", min_value=0, max_value=20, value=2)
+    
+    remaining_days = allowed_a_plus_days - used_days_this_month
+    
+    st.write("---")
+    st.metric("Remaining A+ Size Opportunities This Month", f"{remaining_days} Days Left")
+    
+    if remaining_days <= 0:
+        st.error("🚨 CRITICAL RESTRICTION: আপনার এই মাসের জন্য বড় সাইজের ট্রেড নেওয়ার কোটা সম্পূর্ণ শেষ! উমরের সাইকোলজি রুল: মানসিকভাবে নিজেকে বলুন 'I have 0 days left'. এখন ট্রেড করতে হলে অত্যন্ত ছোট সাইজে শুধু ডেটা কালেকশনের জন্য করতে হবে।")
+    else:
+        st.info(f"💡 মানসিক সচেতনতা: মনে রাখবেন, আপনার জমানো ক্যাপিটাল বাঁচানোর জন্য আর মাত্র {remaining_days}টি সেরা সুযোগ বাকি আছে। তাই ফালতু সেটআপ এড়িয়ে চলুন।")
+
+# ------------------------------------------------------------------
+# RULE 2: THE B-MINUS TRADE SIZING FILTER
+# ------------------------------------------------------------------
+elif menu_part2 == "Rule 2: The B-Minus Trade Sizing Filter":
+    st.header("⚖️ Position Sizing Inconsistency & Setup Grading")
+    st.info("ভিডিওর লজিক (00:15:38 - 00:15:57): ট্রেইডাররা ক্রাশড হওয়ার অন্যতম কারণ হলো তারা B-Minus (অ্যাভারেজ বা মাঝারি) গ্রেডের সেটআপগুলোতেও ফুল পজিশন সাইজ বা অতিরিক্ত লট নিয়ে এন্ট্রি করে ফেলে। ১টি ভালো সেটআপের লাভ ২টি ফালতু সেটআপের কারণে ধুয়ে যায়।")
+    
+    current_setup = st.selectbox("Grade the Current Market Structure:", [
+        "A+ Setup (Perfect Alignment of all 26 Files)",
+        "B- Grade Setup (Average Structure / Partial Confluence)",
+        "C Grade Setup (Chop / High Risk / FOMO Entry)"
+    ])
+    
+    st.write("---")
+    if current_setup == "B- Grade Setup (Average Structure / Partial Confluence)":
+        st.warning("⚠️ AUTOMATIC RISK FILTER: উমর আশরাফের কঠোর নির্দেশ—'Taking B-minus setups with inconsistent sizes will crush you'. আপনার স্ট্যান্ডার্ড ট্রেড সাইজ বা লট অবিলম্বে ৫০% কমিয়ে দিন (Reduce Size to Half) অথবা ট্রেডটি সম্পূর্ণ স্কিপ করুন।")
+    elif current_setup == "C Grade Setup (Chop / High Risk / FOMO Entry)":
+        st.error("🚨 EXECUTION BLOCK: এটি সম্পূর্ণ ইমোশনাল এবং আবর্জনা (Garbage) সেটআপ। এখানে আপনার ২৬টি ফাইলের কোনো ব্যাকরণ বা কনফ্লুয়েন্স নেই। এন্ট্রি সম্পূর্ণ নিষিদ্ধ।")
+    else:
+        st.success("💎 ELITE A+ CONFIRMED: এটি আপনার বিগত ৬ মাসের ব্যাক-ডেটা সমর্থিত হাই-প্রোবাবিলিটি ট্রেড। পূর্ণ নিয়মে এক্সিকিউট করতে পারেন।")
+
+# ------------------------------------------------------------------
+# RULE 3: PRICE ACTION VS MARKET ECONOMY BIAS
+# ------------------------------------------------------------------
+elif menu_part2 == "Rule 3: Price Action vs Market Economy Bias":
+    st.header("📉 Market Economy vs Price Action Priority")
+    st.info("ভিডিওর লজিক (00:29:08 - 00:29:35): উমর আশরাফের অত্যন্ত দামি শিক্ষা—'Market is not the economy'. অনেক ট্রেইডার নিউজ দেখে বা ইকোনমির খারাপ খবর (যেমন সরকারি শাটডাউন) শুনেই ধরে নেয় মার্কেট নিচে নামবে এবং সেল দিয়ে বসে থাকে। এটি একটি ফাঁদ।")
+    
+    news_bias = st.selectbox("Current Macroeconomic News Sentiment:", ["Highly Bearish / Bad Economic News", "Highly Bullish News", "Neutral"])
+    actual_chart_structure = st.selectbox("What does the actual Price Action / Chart Trend say?", ["Bullish Trend (Making Higher Highs & Structural Break)", "Bearish Trend (Making Lower Lows)"])
+    
+    st.write("---")
+    if news_bias == "Highly Bearish / Bad Economic News" and actual_chart_structure == "Bullish Trend (Making Higher Highs & Structural Break)":
+        st.error("🚨 BIAS TRAP DETECTED: উমরের রুল—নিউজ দেখে বা নিজের মনের ধারণায় আন্দাজে শর্ট (Short) করবেন না। 'Let price dictate that, let price be the guide'. চার্ট যেহেতু বুলিশ স্ট্রাকচার দেখাচ্ছে, তাই নিউজের বিরুদ্ধে গিয়ে প্রাইস অ্যাকশনকেই সর্বোচ্চ অগ্রাধিকার দিতে হবে।")
+    else:
+        st.success("✅ STRUCTURE ALIGNED: কোনো মানসিক পক্ষপাতিত্ব (Bias) নেই। প্রাইস অ্যাকশন ও ট্রেন্ডের সামঞ্জস্য রয়েছে।")
+
+# ------------------------------------------------------------------
+# RULE 4: SCALPING VS HIGH-CONFLUENCE STRUCTURE
+# ------------------------------------------------------------------
+elif menu_part2 == "Rule 4: Scalping vs High-Confluence Structure":
+    st.header("🎯 Scalper Win Percentage vs Multi-Trade Hunting")
+    st.info("ভিডিওর লজিক (00:24:14 - 00:24:35): কিছু স্ক্যালপার ২৫% বা ৩০% উইন রেট নিয়েও টিকে থাকে কারণ তারা প্রচুর ছোট ছোট র‍্যান্ডম ট্রেড থেকে ১টি মাত্র বড় ট্রেন্ড বা ভালো সেটআপ খোঁজার চেষ্টা করে। কিন্তু আপনার যদি ট্রেডের সংখ্যা কম হয়, তবে আপনার রিস্ক এবং রিওয়ার্ড রেশিও অবশ্যই ২ থেকে ৩ আর (2-3 R) হতে হবে।")
+    
+    trading_style = st.radio("Select Your Execution Focus:", ["High Frequency Scalping (২৫-৩০% Win Rate)", "Elite Confluence Trading (2-3 R minimum)"])
+    
+    st.write("---")
+    if trading_style == "High Frequency Scalping (২৫-৩০% Win Rate)":
+        st.warning("⚠️ WARNING: স্ক্যালপিংয়ে অতিরিক্ত ব্রোকারেজ ফি এবং চপ মার্কেটে মেমোরি লস হওয়ার ঝুঁকি থাকে। উমরের পরামর্শ—যদি ট্রেড সংখ্যা কমাতে চান, তবে প্রতিটি এন্ট্রির রিওয়ার্ড রেশিও অবশ্যই ন্যূনতম ১:২ বা ১:৩ হতে হবে।")
+    else:
+        st.success("💎 ELITE FOCUS: আপনি সঠিক ট্র্যাকে আছেন। কম ট্রেড এবং বড় রিওয়ার্ড রেশিও-ই প্রফেশনালদের মূল চাবিকাঠি।")
+
+# ------------------------------------------------------------------
+# RULE 5: PRE-MARKET MENTAL BASELINE SETUP
+# ------------------------------------------------------------------
+elif menu_part2 == "Rule 5: Pre-Market Mental Baseline Setup":
+    st.header("☀️ Pre-Market Mental Baseline & Goal Setting")
+    st.info("ভিডিওর লজিক (02:46:44 - 02:46:56): উমর আশরাফ ট্রেইডার জেলা (TradeZella) অ্যাপে যে অডিটটি সবচেয়ে বেশি পছন্দ করেছিলেন, তা হলো ট্রেড শুরু করার আগের মনস্তাত্ত্বিক প্রস্তুতি। জার্নালিং মানে শুধু লাভ-ক্ষতির অংক নয়, এটি আপনার মানসিক স্বাস্থ্যের ট্র্যাকিং।")
+    
+    st.subheader("Daily Morning Self-Audit:")
+    mental_state = st.selectbox("ট্রেডিং টার্মিনাল খোলার মুহূর্তে আপনার মনের অবস্থা কেমন?", [
+        "Calm, Neutral & Objective",
+        "Anxious / Under pressure to make money",
+        "Frustrated from previous day's loss",
+        "Overconfident after recent wins"
+    ])
+    
+    weakness_target = st.text_input("গতকাল আপনার করা সবচেয়ে বড় দুর্বলতা বা ভুল কোনটি ছিল, যা আজকে আপনি কোনোভাবেই করবেন না?")
+    
+    st.write("---")
+    if st.button("Activate Today's Execution Baseline"):
+        if mental_state != "Calm, Neutral & Objective":
+            st.error(f"🚨 BRAIN ALERT: আপনার মানসিক অবস্থা বর্তমানে ট্রেড করার জন্য পারফেক্ট নয় ({mental_state})। উমরের নির্দেশ: নিজেকে শান্ত করুন, ইমোশন নিয়ে চার্ট দেখলে আপনি লস করবেন।")
+        st.success(f"🎯 Today's Core Objective Activated: 'আজকে আমি কোনোভাবেই {weakness_target if weakness_target else 'নিয়ম ভাঙব না'}।'")

@@ -2148,3 +2148,120 @@ elif menu_part2 == "Rule 5: Pre-Market Mental Baseline Setup":
         if mental_state != "Calm, Neutral & Objective":
             st.error(f"🚨 BRAIN ALERT: আপনার মানসিক অবস্থা বর্তমানে ট্রেড করার জন্য পারফেক্ট নয় ({mental_state})। উমরের নির্দেশ: নিজেকে শান্ত করুন, ইমোশন নিয়ে চার্ট দেখলে আপনি লস করবেন।")
         st.success(f"🎯 Today's Core Objective Activated: 'আজকে আমি কোনোভাবেই {weakness_target if weakness_target else 'নিয়ম ভাঙব না'}।'")
+import streamlit as st
+import pandas as pd
+import datetime
+
+# ২ ঘণ্টা ৫০ মিনিটের মাস্টারক্লাসের চূড়ান্ত এবং শেষ ধাপ (Part 3)
+st.title("💎 Project 07: Umar Ashraf Masterclass (Part 3)")
+st.markdown("### Payout Mastery, Post-Market Deep Review & Compounding Engine")
+st.write("---")
+
+# ভিডিওর শেষ অংশের নিখুঁত লজিক্যাল মডিউলস
+menu_part3 = st.sidebar.radio("Select Execution Node", [
+    "Rule 1: Post-Market End-of-Day Review",
+    "Rule 2: Tomorrow's Goal Formatting Law",
+    "Rule 3: Funded Account & Payout Preservation",
+    "Rule 4: Micro Changes & Long-Term Compounding",
+    "Rule 5: The Ultimate Vision (Never Quit Contract)"
+])
+
+# ------------------------------------------------------------------
+# RULE 1: POST-MARKET END-OF-DAY REVIEW
+# ------------------------------------------------------------------
+if menu_part3 == "Rule 1: Post-Market End-of-Day Review":
+    st.header("🌙 Post-Market Deep Journaling & Flaw Tracking")
+    st.info("ভিডিওর লজিক (02:47:02 - 02:47:25): উমর আশরাফের লাইভ গাইডলাইন—ট্রেডিং সেশন শেষ হওয়ার পর আপনাকে ডাবল ডাউন করতে হবে আপনার ডাটার ওপর। দিনশেষে খাতা খুলে বের করতে হবে আপনার সবচেয়ে বড় ভুল এবং সবচেয়ে সেরা সিদ্ধান্তগুলো কী ছিল।")
+    
+    st.subheader("End-of-Day Execution Audit:")
+    biggest_flaw = st.selectbox("আজকে আপনার করা সবচেয়ে বড় এক্সিকিউশন ভুল কোনটি?", [
+        "None - Strictly Followed All 26 Files Rules",
+        "Oversizing (লোভে পড়ে লট সাইজ বাড়িয়ে দেওয়া)",
+        "Overtrading (মার্কেটে জোর করে বেশি ট্রেড নেওয়া)",
+        "FOMO Entry (তাড়াহুড়ো করে ট্রেন্ড মিস হওয়ার ভয়ে ঢোকা)",
+        "Emotional Revenge (লস রিকভারি করার চেষ্টা করা)"
+    ])
+    
+    best_decision = st.text_area("আজকে চার্টের ভেতরে বা বাইরে আপনার নেওয়া সবচেয়ে বুদ্ধিমান বা বেস্ট সিদ্ধান্তটি কী ছিল?")
+    
+    st.write("---")
+    if st.button("Save Post-Market Data"):
+        if biggest_flaw != "None - Strictly Followed All 26 Files Rules":
+            st.warning(f"⚠️ DATA RECORDED: আজকে আপনার প্রধান দুর্বলতা ছিল: {biggest_flaw}। এটিই হবে আপনার আগামীকালের প্রধান যুদ্ধ।")
+        else:
+            st.success("💎 ELITE DAY: আপনি আজ একজন প্রফেশনাল ট্রেইডারের মতো নিয়ম মেনে চলেছেন!")
+
+# ------------------------------------------------------------------
+# RULE 2: TOMORROW'S GOAL FORMATTING LAW
+# ------------------------------------------------------------------
+elif menu_part3 == "Rule 2: Tomorrow's Goal Formatting Law":
+    st.header("🎯 Turning Yesterday's Weakness into Today's Goal")
+    st.info("ভিডিওর লজিক (02:47:25 - 02:47:36): সফল ট্রেইডারের মূল সিক্রেট হলো—'Yesterday's biggest weakness is today's main goal to improve'. প্রতিদিন একটি করে মিস্টেক কিল করতে হবে।")
+    
+    yesterday_weakness = st.text_input("গতকাল আপনার সিস্টেমে বা ইমোশনে সবচেয়ে বড় উইকনেস কী ধরা পড়েছিল?")
+    
+    st.write("---")
+    if st.button("Generate Today's Action Plan"):
+        if yesterday_weakness:
+            st.error(f"⚔️ TODAY'S TARGET: আজকে আপনি যেকোনো ট্রেডে ঢোকার আগে এই ড্যাশবোর্ড আপনাকে ওয়ার্নিং দিচ্ছে—আজকের একমাত্র লক্ষ্য হলো '{yesterday_weakness}' এই ভুলটি কোনোভাবেই পুনরাবৃত্তি না করা।")
+            st.code(f"Condition Level: If (Current_Action == '{yesterday_weakness}') -> BLOCK EXECUTION.")
+        else:
+            st.info("অনুগ্রহ করে আপনার গতকালের দুর্বলতাটি ওপরে লিখুন যাতে সিস্টেম গার্ডরেল তৈরি করতে পারে।")
+
+# ------------------------------------------------------------------
+# RULE 3: FUNDED ACCOUNT & PAYOUT PRESERVATION
+# ------------------------------------------------------------------
+elif menu_part3 == "Rule 3: Funded Account & Payout Preservation":
+    st.header("💰 Prop Firm Evaluation Pass & Payout Rule")
+    st.info("ভিডিওর লজিক (02:47:51 - 02:48:21): ভিডিওর শেষ দিকে একজন ট্রেইডার শেয়ার করেন কীভাবে উমরের গাইডলাইন মেনে তিনি তার ইভ্যালুয়েশন চ্যালেঞ্জ পাস করেছেন, পে-আউট সিকিউর করেছেন এবং ৩ সপ্তাহেরও বেশি সময় ধরে ফান্ডেড অ্যাকাউন্টটি টিকিয়ে রেখেছেন, যা তার লাইফের দীর্ঘতম সময়।")
+    
+    account_stage = st.selectbox("Select Current Account Milestone Stage:", [
+        "Evaluation Challenge Phase",
+        "Funded Account - Week 1 (Fresh Account)",
+        "Funded Account - Week 3+ (Preservation Phase)"
+    ])
+    
+    st.write("---")
+    if account_stage == "Funded Account - Week 1 (Fresh Account)":
+        st.warning("⚠️ CRITICAL PHASE: নতুন ফান্ডেড অ্যাকাউন্ট পাওয়ার পর প্রথম পে-আউট না পাওয়া পর্যন্ত রিস্ক একদম মিনিমাম রাখুন। প্রেশার বা টার্গেটের ফালতু ইমোশনে পা দেবেন না।")
+    elif account_stage == "Funded Account - Week 3+ (Preservation Phase)":
+        st.success("🎯 MILESTONE ACHIEVED: আপনি উমর আশরাফের সেই সফল ট্রেইডারের মতো লংগেস্ট পিরিয়ডে আছেন। এখন আপনার কাজ লক-ইন থাকা এবং প্রাইস অ্যাকশনকে ডিসটেট করতে দেওয়া।")
+    else:
+        st.info("ইভ্যালুয়েশন ফেজে আপনার লক্ষ্য টাকা বানানো নয়, বরং সঠিক ডেটা কালেকশন করা।")
+
+# ------------------------------------------------------------------
+# RULE 4: MICRO CHANGES & LONG-TERM COMPOUNDING
+# ------------------------------------------------------------------
+elif menu_part3 == "Rule 4: Micro Changes & Long-Term Compounding":
+    st.header("📈 Micro Changes Compounding Over Time")
+    st.info("ভিডিওর লজিক (02:48:55 - 02:49:02): উমর আশরাফের অত্যন্ত পাওয়ারফুল এন্ডিং স্টেটমেন্ট—'The micro changes that you make on and off the charts can really end up compounding over time'. প্রতিদিন নিজের ডিসিপ্লিনে মাত্র ১% পরিবর্তন আনলে বছর শেষে আপনার প্রফিট গ্রাফ আকাশচুম্বী হবে।")
+    
+    st.write("#### 1% Daily Discipline Compounding Simulation:")
+    days_to_compound = st.slider("Select Days of Strict Rules Adherence", 30, 365, 180)
+    
+    # ম্যাথমেটিক্যাল এক্সপোনেনশিয়াল ফর্মুলা ($$A = P(1 + r)^n$$)
+    # এখানে ১% করে ডিসিপ্লিন বা স্কিল গ্রোথ সিমুলেশন দেখানো হচ্ছে
+    initial_skill = 1.0
+    final_compounded_skill = initial_skill * ((1 + 0.01) ** days_to_compound)
+    
+    st.latex(r"Compounded\ Growth = Initial\ Skill \times (1 + 0.01)^{Days}")
+    
+    st.write("---")
+    st.metric(f"{days_to_compound} দিন টানা নিয়ম মেনে চলার পর আপনার ট্রেডিং স্কিল ও প্রফিটাবিলিটি বাড়বে:", f"{final_compounded_skill:.2f} গুণ বেশি 💎")
+    st.info("চার্টের বাইরে আপনার লাইফস্টাইল, মেডিটেশন এবং সেলফ-ইম্প্রুভমেন্টও এই কম্পাউন্ডিংয়ের অংশ।")
+
+# ------------------------------------------------------------------
+# RULE 5: THE ULTIMATE VISION (NEVER QUIT CONTRACT)
+# ------------------------------------------------------------------
+elif menu_part3 == "Rule 5: The Ultimate Vision (Never Quit Contract)":
+    st.header("🤝 The Long-Term Career Contract: Never Quit")
+    st.info("ভিডিওর লজিক (02:48:28 - 02:48:44): উমরের চূড়ান্ত উপদেশ—'If you have this vision of becoming a consistently profitable trader... this is a journey for life. You are never going to leave the markets. So just don't quit, keep knocking doors'.")
+    
+    st.markdown("### 📜 Project 07: Professional Trader Digital Contract")
+    st.write("> 'আমি স্বীকার করছি যে ট্রেডিং কোনো জুয়া বা রাতারাতি বড়লোক হওয়ার স্কিম নয়। এটি একটি সারাজীবনের সাধনা। লস বা ড্রডাউন আসলেও আমি আমার ২৬টি ফাইলের লজিক এবং উমর আশরাফের এই মাস্টারক্লাস রুলস ভাঙব না। আমি ডেটা তৈরি করব, স্কিল বিল্ড করব এবং টিকে থাকব।'")
+    
+    sign_contract = st.checkbox("আমি প্রজেক্ট ০৭-এর এই চুক্তিতে সম্পূর্ণ একমত এবং এটি ডিজিটালভাবে সাইন করলাম।")
+    
+    if sign_contract:
+        st.balloons()
+        st.success("🔥 CONTRACT SIGNED. LOCK IN, MASUM! 'Project 07: The Elite Hunt' ইজ নাও ফুলি প্রোটেক্টেড বাই উমর আশরাফ সাইকোলজি ইঞ্জিন।")

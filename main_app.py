@@ -1735,3 +1735,175 @@ with tab3:
     else:
         st.metric("Remaining A+ Setup Allowed Days This Month", "0 Days Left", "STOP TRADING", delta_color="inverse")
         st.error("🚨 ALERT: আপনার এই মাসের বড় ট্রেড নেওয়ার কোটা শেষ! জোর করে B- বা C গ্রেডের ট্রেড নিয়ে জমানো টাকা নষ্ট করবেন না।")
+import streamlit as st
+import pandas as pd
+import numpy as np
+
+# ------------------------------------------------------------------
+# APP INITIALIZATION & THEME
+# ------------------------------------------------------------------
+st.set_page_config(page_title="Project 07: Umar Ashraf $30M+ Absolute Masterclass", layout="wide")
+
+st.title("💎 Project 07: The Elite Hunt - Umar Ashraf Complete Engine")
+st.markdown("#### ভিডিওর ২ ঘণ্টা ৫০ মিনিটের প্রতিটি লজিক এবং রুলস-এর নিখুঁত পাইথন আর্কিটেকচার")
+st.write("---")
+
+# ভিডিওর প্রতিটি বিষয়কে ৮টি কঠোর মডিউলে ভাগ করা হয়েছে যাতে একটি কথাও মিস না হয়
+menu = st.sidebar.selectbox("Select Masterclass Node", [
+    "1. Overtrading & Volume Guard (১০০ ট্রেড রোগ মুক্তি)",
+    "2. Psychological Disconnection & Revenge Law",
+    "3. A+ Setup Matrix & Monthly Restriction",
+    "4. Risk-to-Reward Ratio (R:R) vs Win-Rate Engine",
+    "5. Position Sizing & Consistency Rule",
+    "6. Pre & Post Market Deep Journaling",
+    "7. Price Action Priority (News vs Price)",
+    "8. Evaluation & Data Collection Milestone"
+])
+
+# ------------------------------------------------------------------
+# MODULE 1: OVERTRADING & VOLUME GUARD
+# ------------------------------------------------------------------
+if menu == "1. Overtrading & Volume Guard (১০০ ট্রেড রোগ মুক্তি)":
+    st.header("🚫 Overtrading & Random Trade Elimination Guard")
+    st.info("ভিডিওর লজিক: দিনে ১০০টি পর্যন্ত র‍্যান্ডম ট্রেড নেওয়া কোনো মানুষের পক্ষে সম্ভব নয়। এটি স্রেফ জুয়া এবং এটি অ্যাকাউন্ট জিরো করার প্রধান কারণ।")
+    
+    daily_trades = st.number_input("Enter Total Trades Taken Today:", min_value=0, max_value=200, value=5)
+    
+    if daily_trades > 20:
+        st.error(f"🚨 CRITICAL OVERTRADING DETECTED ({daily_trades} Trades)! উমর আশরাফের রুল: 'You have just taken random trades without thinking next step'. অবিলম্বে ট্রেডিং টার্মিনাল বন্ধ করুন।")
+    elif daily_trades > 5:
+        st.warning(f"⚠️ HIGH VOLUMING ({daily_trades} Trades): আপনি বি-গ্রেড বা সি-গ্রেড ট্রেডে ঢুকছেন। নিজের ২৬টি ফাইলের বেস্ট সিগন্যালের জন্য ওয়েট করুন।")
+    else:
+        st.success(f"✅ CONTROLLED TRADING ({daily_trades} Trades): আপনার ইমোশন কন্ট্রোলে আছে।")
+
+# ------------------------------------------------------------------
+# MODULE 2: PSYCHOLOGICAL DISCONNECTION & REVENGE LAW
+# ------------------------------------------------------------------
+elif menu == "2. Psychological Disconnection & Revenge Law":
+    st.header("🧠 Disconnecting From Previous Losses & Revenge Trading Rule")
+    st.info("ভিডিওর লজিক: যখন কোনো ট্রেইডারের মাস নেগেটিভ যায় বা বড় লস হয়, সে সেটি দ্রুত রিকভার করার জন্য ব্যাক-টু-ব্যাক লস জমায়। পূর্বের লস থেকে নিজেকে সম্পূর্ণ আলাদা করতে হবে।")
+    
+    current_month_status = st.radio("Is your current month in Negative/Drawdown?", ["Yes, I am in Loss", "No, I am in Profit"])
+    
+    if current_month_status == "Yes, I am in Loss":
+        st.error("🚨 REVENGE TRADING ALERT: উমর আশরাফের পরামর্শ—আপনি লস রিকভার করার মানসিকতা (Trying to gain it back) থেকে ট্রেড সাইজ বাড়িয়ে দিচ্ছেন।")
+        st.markdown("**Your Restriction Action:**")
+        st.code("Rule: Disconnect from previous trading periods immediately. Do not trade for the next 24-48 hours.")
+    else:
+        st.success("💎 STABLE MINDSET: আপনি পূর্বের লস দ্বারা প্রভাবিত নন।")
+
+# ------------------------------------------------------------------
+# MODULE 3: A+ SETUP MATRIX & MONTHLY RESTRICTION
+# ------------------------------------------------------------------
+elif menu == "3. A+ Setup Matrix & Monthly Restriction":
+    st.header("📅 Monthly Restrictions on A+ Position Sizes")
+    st.info("ভিডিওর লজিক: মাসে যদি ২০টি ট্রেডিং দিন থাকে, তবে সব দিন বড় সাইজ নেওয়া যাবে না। নিজেকে মাত্র ৫ বা ৬টি 'A+ Size' ট্রেডিং দিনের মধ্যে সীমাবদ্ধ করতে হবে।")
+    
+    used_a_plus_days = st.number_input("How many A+ Size days have you used this month?", min_value=0, max_value=20, value=2)
+    allowed_days = 6
+    remaining_days = allowed_days - used_a_plus_days
+    
+    st.metric("Remaining A+ Size Days Left", f"{remaining_days} / {allowed_days} Days")
+    
+    if remaining_days <= 0:
+        st.error("🚨 RESTRICTION ACTIVATED: আপনার এই মাসের A+ ট্রেডের কোটা শেষ! আপনি মানসিকভাবে ভাবুন 'I have 0 days left'. এখন শুধু ছোট সাইজে ডেটা কালেকশনের ট্রেড হবে।")
+    else:
+        st.info(f"💡 আপনি মানসিকভাবে তৈরি থাকুন যে আপনার কাছে আর মাত্র {remaining_days}টি বেস্ট সুযোগ আছে। তাই প্রতিটা সেটআপ নিখুঁত হতে হবে।")
+
+# ------------------------------------------------------------------
+# MODULE 4: RISK-TO-REWARD RATIO (R:R) VS WIN-RATE ENGINE
+# ------------------------------------------------------------------
+elif menu == "4. Risk-to-Reward Ratio (R:R) vs Win-Rate Engine":
+    st.header("📊 The Core Risk Shift: Win Percentage vs Risk-to-Reward")
+    st.info("ভিডিওর লজিক: ৮০% উইন রেট নিয়েও ১ বা ২ ট্রেডে অ্যাকাউন্ট ওড়ানো বোকামি। ৪০% উইন রেট এবং ২ বা ৩ R:R থাকলে আপনি লং-টার্মে প্রফিটেবল থাকবেন।")
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        wr = st.slider("Select Win Rate (%)", 10, 90, 40)
+        rr = st.slider("Select Risk-to-Reward Ratio (1:X)", 1.0, 5.0, 3.0)
+    with col2:
+        risk_per_trade_pct = st.slider("Risk Per Trade (% of Account)", 0.5, 5.0, 1.0)
+        total_sample_trades = 20
+
+    # গাণিতিক ব্যাকএন্ড সিমুলেশন
+    wins = int((wr / 100) * total_sample_trades)
+    losses = total_sample_trades - wins
+    
+    expected_value = (wr / 100 * rr) - ((100 - wr) / 100 * 1)
+    
+    st.write("---")
+    st.markdown("#### Mathematical Expectancy Formula:")
+    st.latex(r"Expectancy = (Win\% \times R:R) - (Loss\% \times 1)")
+    
+    if expected_value > 0:
+        st.success(f"💎 POSITIVE EXPECTANCY ({expected_value:.2f}): উমরের কথা অনুযায়ী এই ম্যাথমেটিক্যাল মডেল আপনাকে প্রফিট দেবে, উইন রেট কম হলেও সমস্যা নেই।")
+    else:
+        st.error(f"❌ NEGATIVE EXPECTANCY ({expected_value:.2f}): আপনার উইন রেট বেশি হলেও ১টি লসের সাইজ বড় হওয়ায় আপনি অ্যাকাউন্ট ওড়াবেন (Blow Account)। R:R বাড়ান।")
+
+# ------------------------------------------------------------------
+# MODULE 5: POSITION SIZING & CONSISTENCY RULE
+# ------------------------------------------------------------------
+elif menu == "5. Position Sizing & Consistency Rule":
+    st.header("⚖️ Position Sizing Consistency & B-Minus Trade Filter")
+    st.info("ভিডিওর লজিক: ট্রেইডাররা লসে পড়ে কারণ তারা পজিশন সাইজ ঠিক রাখে না। কোনো ট্রেডে হুট করে ওভারসাইজ করে ফেলে এবং B-Minus (দুর্বল) সেটআপে ঢুকে ক্রাশড হয়ে যায়।")
+    
+    setup_grade = st.selectbox("Grade the Current Market Setup:", ["A+ Setup (Perfect Alignment)", "B- Grade Setup (Average)", "C Grade Setup (High Risk/Chop)"])
+    
+    if setup_grade == "B- Grade Setup (Average)":
+        st.warning("⚠️ FILTER ACTIVATED: উমর আশরাফের রুল—'Taking B-minus setups with inconsistent sizes will crush you'. আপনার ট্রেড সাইজ ৫০% কমিয়ে দিন অথবা ট্রেড এড়িয়ে চলুন।")
+    elif setup_grade == "C Grade Setup (High Risk/Chop)":
+        st.error("🚨 DO NOT ENTER: এটি ফালতু সেটআপ। এখানে আপনার ২৬টি ফাইলের কোনো কনফ্লুয়েন্স নেই।")
+    else:
+        st.success("✅ A+ SETUP: আপনার পূর্ববর্তী ৬ মাসের ডেটা অনুযায়ী এই সেটআপে আপনি প্রফিটেবল।")
+
+# ------------------------------------------------------------------
+# MODULE 6: PRE & POST MARKET DEEP JOURNALING
+# ------------------------------------------------------------------
+elif menu == "6. Pre & Post Market Deep Journaling":
+    st.header("📝 Mental Journaling & Self-Mastery Log")
+    st.info("ভিডিওর লজিক: উমর আশরাফ ট্রেইডার জেলা (TradeZella)-তে এই প্রি-মার্কেট জার্নালিং সিস্টেমটি খুব পছন্দ করেছেন। এটি শুধু টেকনিক্যাল এন্ট্রি-এক্সিট ট্র্যাকিং নয়, এটি আপনার ফিলিংসের ট্র্যাক রেকর্ড।")
+    
+    st.subheader("☀️ Pre-Market Journal (ট্রেড শুরুর আগে)")
+    p1 = st.selectbox("How are you feeling right now?", ["Calm & Ready", "Anxious/Stressed", "Frustrated from yesterday", "Overconfident"])
+    p2 = st.text_input("What is your single main goal or weakness to fix today?")
+    
+    st.subheader("🌙 Post-Market Journal (দিনশেষে)")
+    p3 = st.selectbox("Identify today's biggest execution flaw:", ["None - Followed Rules", "Oversizing", "Overtrading", "FOMO Entry", "Emotional Revenge"])
+    p4 = st.text_area("What was your best decision on or off the charts today?")
+    
+    if st.button("Commit Journal Entry to System Data"):
+        st.success("✅ Logged Entry. উমরের রুল: 'Your job is to double down on what works and fix the one weakness daily.'")
+
+# ------------------------------------------------------------------
+# MODULE 7: PRICE ACTION PRIORITY (NEWS VS PRICE)
+# ------------------------------------------------------------------
+elif menu == "7. Price Action Priority (News vs Price)":
+    st.header("📉 Let Price Dictate (Price Action vs Market Economy)")
+    st.info("ভিডিওর লজিক: 'Market is not the economy'. নিউজে বা ইকোনমিতে খারাপ কিছু ঘটলেই মার্কেট নিচে নামবে—এমন মনগড়া ধারণায় ট্রেড করে মানুষ বড় লস করে।")
+    
+    news_sentiment = st.selectbox("What does the current Economic News say?", ["Highly Bearish News", "Highly Bullish News", "No News"])
+    price_action_trend = st.selectbox("What does the actual Price Action / Chart say?", ["Bullish Structure (Making Higher Highs)", "Bearish Structure (Making Lower Lows)"])
+    
+    if news_sentiment == "Highly Bearish News" and price_action_trend == "Bullish Structure (Making Higher Highs)":
+        st.error("🚨 BIAS TRAP ALERT: উমর আশরাফের রুল—নিউজ দেখে সেল করবেন না। 'Let price dictate that'. চার্ট যেহেতু বুলিশ, তাই প্রাইস অ্যাকশনকে ফলো করুন, নিউজকে নয়।")
+    else:
+        st.success("✅ ALIGNED: আপনার ধারণা চার্টের ট্রেন্ডের সাথে মিলছে।")
+
+# ------------------------------------------------------------------
+# MODULE 8: EVALUATION & DATA COLLECTION MILESTONE
+# ------------------------------------------------------------------
+elif menu == "8. Evaluation & Data Collection Milestone":
+    st.header("📊 The 2-3 Years Data & Evaluation Mindset")
+    st.info("ভিডিওর লজিক: 'The job is not to make money; your job is to get data, get good, get better'. ২ বা ৩ বছর ডেটা ও স্কিল জমানোর পর টাকা এমনিতেই ব্যাক করবে।")
+    
+    passed_evaluation = st.checkbox("Have you passed your funded/prop firm challenge evaluation?")
+    secured_payout = st.checkbox("Have you secured your first payout?")
+    days_held = st.number_input("How many consecutive weeks have you held this active account?", min_value=0, value=1)
+    
+    st.write("---")
+    st.markdown("### 🏆 Your Milestone Tracking:")
+    if passed_evaluation and secured_payout:
+        st.balloons()
+        st.success(f"🎯 MILESTONE ACHIEVED: আপনি অ্যাকাউন্টের ৩ নম্বর সপ্তাহে আছেন। উমর আশরাফের শেষ পরামর্শ—'Never quit, lock in your price action, and let micro changes compound over time.'")
+    else:
+        st.info("📈 Keep collecting data. যখনই লস হবে, স্ট্র্যাটেজি পরিবর্তন না করে সিস্টেমেটিক্যালি ডেটা অ্যানালাইসিস করুন।")

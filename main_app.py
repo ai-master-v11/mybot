@@ -273,7 +273,6 @@ live_feed = {
     'secure_handshake_ok': True, 'market_phase_state': "TRENDING", 'shadow_demo_losses_filtered': True,
     'price_in_fvg_or_ob': True, 'is_institutional_hour': True, 'canvas_stream_fluid': True
 }
-
 # ------------------------------------------------------------------
 # ⚖️ MATHEMATICAL 99% MAJORITY CONSENSUS SYSTEM
 # ------------------------------------------------------------------
@@ -294,24 +293,6 @@ col_n2.metric("SELL Agreement Confluence", f"{sell_score_pct:.2f}%", f"{sell_nod
 col_n3.metric("SYSTEM ANTI-LOSS SHIELD LOCKS", f"{hold_nodes} Files")
 
 st.write("---")
-
-# ------------------------------------------------------------------
-# 🚨 ABSOLUTE 99% FILTRATION GATEWAY: নো ফাঁকফোকর, নো লস
-# ------------------------------------------------------------------
-st.markdown("### 🎯 Project 07 Ultimate Order Execution Output:")
-
-if buy_score_pct >= 99.0:
-    st.balloons()
-    st.success("🟩 99% HIGH-END CONSENSUS PASSED: UNIVERSAL ELITE BUY SIGNAL ACTIVE!")
-    st.markdown("## **ORDER MATRIX ACTION: CALL (BUY) 🟩**")
-    st.code("System Engine Status: 36/36 Algorithms Aligned. 0% Error Probability Verified.")
-elif sell_score_pct >= 99.0:
-    st.balloons()
-    st.error("🟥 99% HIGH-END CONSENSUS PASSED: UNIVERSAL ELITE SELL SIGNAL ACTIV
-
-import streamlit as st
-import os
-
 # ------------------------------------------------------------------
 # 1. APP CONFIGURATION & THEME SETUP
 # ------------------------------------------------------------------

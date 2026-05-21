@@ -1,494 +1,251 @@
-# ==================================================================
-# 🌌 SYSTEM CORE IMPORTS (অবশ্যই এই লাইনগুলো একদম শুরুতে থাকতে হবে)
-# ==================================================================
-import streamlit as st
-import numpy as np
-import pandas as pd
-import math
+⚡ PROJECT 07: THE ELITE HUNT — TIME-TRAVEL ENGINE
 
-# ------------------------------------------------------------------
-# 🌌 QUANTUM TIME-WARP ARCHITECTURE CONFIGURATION
-# ------------------------------------------------------------------
-st.set_page_config(page_title="Project 07: Quantum Time-Engine 37", layout="wide")
+৩৬টি কোর ফাইলের আল্ট্রা-অ্যাডভান্সড টাইম-কার্ভ ও স্পিড-অফ-লাইট ফিউচার প্রেডিকশন ম্যাট্রিক্স
 
-st.markdown("""
-    <style>
-    .reportview-container { background: #020205; }
-    .main-title { font-size:42px !important; font-weight: 900; color: #00FFCC; text-align: center; text-shadow: 0px 0px 20px #00FFCC; }
-    .sub-title { font-size:18px !important; color: #8F9CAE; text-align: center; font-style: italic; }
-    .stMetric { background: rgba(0, 255, 204, 0.03); border: 1px solid rgba(0, 255, 204, 0.1); border-radius: 12px; padding: 15px; }
-    </style>
-    """, unsafe_allow_html=True)
+📊 Live Time-Travel Engine Analytics Matrix
+BUY Agreement Confluence
 
-st.markdown('<p class="main-title">⚡ PROJECT 07: THE ELITE HUNT — TIME-TRAVEL ENGINE</p>', unsafe_allow_html=True)
-st.markdown('<p class="sub-title">৩৬টি কোর ফাইলের আল্ট্রা-অ্যাডভান্সড টাইম-কার্ভ ও স্পিড-অফ-লাইট ফিউচার প্রেডিকশন ম্যাট্রিক্স</p>', unsafe_allow_html=True)
-st.write("---")
+94.44%
 
-# ------------------------------------------------------------------
-# 🧠 ERROR-PROOF NEURAL CORE ENGINE (THE 36-FILES MONOLITH)
-# ------------------------------------------------------------------
-def execute_time_travel_36_matrix(quantum_feed):
-    """
-    ৩৬টি ফাইলের প্রতিটির হার্ডকোডেড নাম।
-    KeyError এবং ক্র্যাশ থেকে বাঁচতে প্রতিটি ভেরিয়েবলে .get() ব্যবহার করা হয়েছে।
-    """
-    votes = {}
-    
-    base = quantum_feed.get('base_vector', 'HOLD')
-    future_vector = quantum_feed.get('future_probability_index', 0.5)
+34 / 36 Files
 
-    # 📁 ১. Anomaly_Glitch_Hunter.py
-    votes["1. Anomaly_Glitch_Hunter.py"] = "HOLD" if quantum_feed.get('tick_velocity', 0) > 300000 else base
+SELL Agreement Confluence
 
-    # 📁 ২. Institutional_Shadow_Tracker.py
-    votes["2. Institutional_Shadow_Tracker.py"] = base if quantum_feed.get('dark_pool_imbalance', 0) >= 3.5 else "HOLD"
+0.00%
 
-    # 📁 ৩. Omni_Cross_Chain_Sync.py
-    votes["3. Omni_Cross_Chain_Sync.py"] = base if quantum_feed.get('photon_sync_delay', 0.01) < 0.001 else "HOLD"
+0 / 36 Files
 
-    # 📁 ৪. Quantum_Flux_Scanner.py
-    votes["4. Quantum_Flux_Scanner.py"] = base if quantum_feed.get('quantum_entropy', 1.0) < 0.15 else "HOLD"
+ANTIMANIPULATION SHIELD LOCKS
 
-    # 📁 ৫. Recursive_Risk_Guardian.py
-    votes["5. Recursive_Risk_Guardian.py"] = "HOLD" if quantum_feed.get('predicted_drawdown', 0) > 4.5 else base
+2 Files
 
-    # 📁 ৬. Self_Healing_Optimizer.py
-    votes["6. Self_Healing_Optimizer.py"] = base if quantum_feed.get('matrix_health', 0) > 0.98 else "HOLD"
+🎯 Project 07 Ultimate Order Execution Output:
+⏳
+TIME-SHIELD BALANCE ACTIVE: ৯৯% মেজরিটি কন্ডিশন এখনও পূর্ণ হয়নি।
 
-    # 📁 ৭. Sentiment_Neural_Bridge.py
-    if future_vector > 0.85: votes["7. Sentiment_Neural_Bridge.py"] = "BUY"
-    elif future_vector < 0.15: votes["7. Sentiment_Neural_Bridge.py"] = "SELL"
-    else: votes["7. Sentiment_Neural_Bridge.py"] = "HOLD"
+সর্বোচ্চ চেইন সাপোর্ট রেশিও: BUY (94.4%) | SELL (0.0%)। ব্রোকারের ফেক লস এড়াতে সিস্টেম বাটন লক রেখেছে।
 
-    # 📁 ৮. The_Elite_Architect_2030.py
-    votes["8. The_Elite_Architect_2030.py"] = base if quantum_feed.get('hyper_trend_aligned', False) else "HOLD"
+📂 Real-Time 36-File Network Sync Grid (Time-Travel Verification Mode)
+📄 1. Anomaly_Glitch_Hunter.py
 
-    # 📁 ৯. ai_consultant.py
-    votes["9. ai_consultant.py"] = "BUY" if quantum_feed.get('predicted_close_delta', 0) > 0.00010 else ("SELL" if quantum_feed.get('predicted_close_delta', 0) < -0.00010 else "HOLD")
+🟩
+BUY VOTE PASSED
 
-    # 📁 ১০. algorithm_hijacker.py
-    if quantum_feed.get('candle_loop_streak', 0) >= 4:
-        votes["10. algorithm_hijacker.py"] = "SELL" if quantum_feed.get('current_phase') == "UPWARD" else "BUY"
-    else:
-        votes["10. algorithm_hijacker.py"] = "HOLD"
+📄 5. Recursive_Risk_Guardian.py
 
-    # 📁 ১১. broker_shield_bypass.py
-    votes["11. broker_shield_bypass.py"] = "HOLD" if quantum_feed.get('broker_manipulation_index', 0) > 0.70 else base
+🟩
+BUY VOTE PASSED
 
-    # 📁 ১২. dark_psychology_v2.py
-    votes["12. dark_psychology_v2.py"] = "HOLD" if quantum_feed.get('system_overload_flag', False) else base
+📄 9. ai_consultant.py
 
-    # 📁 ১৩. dashboard.py
-    votes["13. dashboard.py"] = base if quantum_feed.get('render_clock_skew', 100) < 10 else "HOLD"
+🟩
+BUY VOTE PASSED
 
-    # 📁 ১৪. data_thief_engine.py
-    votes["14. data_thief_engine.py"] = base if quantum_feed.get('micro_pips_volatility', 0) > 0.00002 else "HOLD"
+📄 13. dashboard.py
 
-    # 📁 ১৫. elite_indicators.py
-    if quantum_feed.get('hyper_rsi', 50) > 65 and quantum_feed.get('quantum_macd') == "BEARISH_CROSS":
-        votes["15. elite_indicators.py"] = "SELL"
-    elif quantum_feed.get('hyper_rsi', 50) < 35 and quantum_feed.get('quantum_macd') == "BULLISH_CROSS":
-        votes["15. elite_indicators.py"] = "BUY"
-    else:
-        votes["15. elite_indicators.py"] = "HOLD"
+🟩
+BUY VOTE PASSED
 
-    # 📁 ১৬. engine_core.py
-    votes["16. engine_core.py"] = base if quantum_feed.get('socket_heartbeat') == "EXCELLENT" else "HOLD"
+📄 17. future_forecaster.py
 
-    # 📁 ১৭. future_forecaster.py
-    votes["17. future_forecaster.py"] = "BUY" if future_vector > 0.75 else ("SELL" if future_vector < 0.25 else "HOLD")
+🟩
+BUY VOTE PASSED
 
-    # 📁 ১৮. glitch_detector.py
-    votes["18. glitch_detector.py"] = "HOLD" if quantum_feed.get('is_manipulated_candle', False) else base
+📄 21. latency_injector.py
 
-    # 📁 ১৯. global_sync.py
-    votes["19. global_sync.py"] = base if quantum_feed.get('atomic_drift_ns', 100) < 50 else "HOLD"
+🟩
+BUY VOTE PASSED
 
-    # 📁 ২০. historical_analyzer.py
-    votes["20. historical_analyzer.py"] = base if quantum_feed.get('pattern_fractal_score', 0) > 0.85 else "HOLD"
+📄 25. pattern_recognizer.py
 
-    # 📁 ২১. latency_injector.py
-    votes["21. latency_injector.py"] = base if quantum_feed.get('millisecond_timer', 999) <= 200 else "HOLD"
+🟩
+BUY VOTE PASSED
 
-    # 📁 ২২. logic_101.py
-    if quantum_feed.get('at_critical_resistance', False): votes["22. logic_101.py"] = "SELL"
-    elif quantum_feed.get('at_critical_support', False): votes["22. logic_101.py"] = "BUY"
-    else: votes["22. logic_101.py"] = "HOLD"
+📄 29. requirements.txt
 
-    # 📁 ২৩. market_watcher.py
-    votes["23. market_watcher.py"] = base if quantum_feed.get('trend_acceleration', 0) > 1.5 else "HOLD"
+🟩
+BUY VOTE PASSED
 
-    # 📁 ২৪. millisecond_forecaster.py
-    votes["24. millisecond_forecaster.py"] = base if quantum_feed.get('tick_momentum_positive', False) else "HOLD"
+📄 33. shadow_liquidity_bridge.py
 
-    # 📁 ২৫. pattern_recognizer.py
-    votes["25. pattern_recognizer.py"] = "BUY" if quantum_feed.get('fractal_pattern') == "BULL_RUN" else ("SELL" if quantum_feed.get('fractal_pattern') == "BEAR_DROP" else "HOLD")
+🟩
+BUY VOTE PASSED
 
-    # 📁 ২৬. project_07_final_lock.py
-    votes["26. project_07_final_lock.py"] = base if quantum_feed.get('umar_ashraf_gate_pass', False) else "HOLD"
+📄 2. Institutional_Shadow_Tracker.py
 
-    # 📁 ২৭. push_to_cloud.py
-    votes["27. push_to_cloud.py"] = base if quantum_feed.get('cloud_handshake', False) else "HOLD"
+🟩
+BUY VOTE PASSED
 
-    # 📁 ২৮. python_push_to_cloud.py
-    votes["28. python_push_to_cloud.py"] = "HOLD" if quantum_feed.get('container_ram_load', 0) > 80 else base
+📄 6. Self_Healing_Optimizer.py
 
-    # 📁 ২৯. requirements.txt
-    votes["29. requirements.txt"] = base if quantum_feed.get('environment_stable', False) else "HOLD"
+🟩
+BUY VOTE PASSED
 
-    # 📁 ৩০. risk_shield.py
-    votes["30. risk_shield.py"] = "HOLD" if quantum_feed.get('consecutive_loss_count', 0) >= 2 else base
+📄 10. algorithm_hijacker.py
 
-    # 📁 ৩১. secret_config.py
-    votes["31. secret_config.py"] = base if quantum_feed.get('proxy_handshake_secure', False) else "HOLD"
+🟨
+SYSTEM LOCKED
 
-    # 📁 ৩২. secret_signals.py
-    votes["32. secret_signals.py"] = base if quantum_feed.get('hidden_imbalance_present', True) else "HOLD"
+📄 14. data_thief_engine.py
 
-    # 📁 ৩৩. shadow_liquidity_bridge.py
-    votes["33. shadow_liquidity_bridge.py"] = base if quantum_feed.get('virtual_losses_cleared', False) else "HOLD"
+🟩
+BUY VOTE PASSED
 
-    # 📁 ৩৪. smart_money.py
-    votes["34. smart_money.py"] = base if quantum_feed.get('inside_premium_discount_zone', False) else "HOLD"
+📄 18. glitch_detector.py
 
-    # 📁 ৩৫. time_warrior.py
-    votes["35. time_warrior.py"] = base if quantum_feed.get('is_golden_trading_hour', False) else "HOLD"
+🟩
+BUY VOTE PASSED
 
-    # 📁 ৩৬. visual_master.py
-    votes["36. visual_master.py"] = base if quantum_feed.get('canvas_stream_fluid', False) else "HOLD"
+📄 22. logic_101.py
 
-    return votes
+🟩
+BUY VOTE PASSED
 
-# ------------------------------------------------------------------
-# 📊 TIME-WARP PIPELINE LIVE DATA CAPTURE
-# ------------------------------------------------------------------
-st.sidebar.markdown("### 🎛️ Live Quantum Feeds")
-live_quantum_feed = {
+📄 26. project_07_final_lock.py
+
+🟩
+BUY VOTE PASSED
+
+📄 30. risk_shield.py
+
+🟩
+BUY VOTE PASSED
+
+📄 34. smart_money.py
+
+🟩
+BUY VOTE PASSED
+
+📄 3. Omni_Cross_Chain_Sync.py
+
+🟩
+BUY VOTE PASSED
+
+📄 7. Sentiment_Neural_Bridge.py
+
+🟩
+BUY VOTE PASSED
+
+📄 11. broker_shield_bypass.py
+
+🟩
+BUY VOTE PASSED
+
+📄 15. elite_indicators.py
+
+🟨
+SYSTEM LOCKED
+
+📄 19. global_sync.py
+
+🟩
+BUY VOTE PASSED
+
+📄 23. market_watcher.py
+
+🟩
+BUY VOTE PASSED
+
+📄 27. push_to_cloud.py
+
+🟩
+BUY VOTE PASSED
+
+📄 31. secret_config.py
+
+🟩
+BUY VOTE PASSED
+
+📄 35. time_warrior.py
+
+🟩
+BUY VOTE PASSED
+
+📄 4. Quantum_Flux_Scanner.py
+
+🟩
+BUY VOTE PASSED
+
+📄 8. The_Elite_Architect_2030.py
+
+🟩
+BUY VOTE PASSED
+
+📄 12. dark_psychology_v2.py
+
+🟩
+BUY VOTE PASSED
+
+📄 16. engine_core.py
+
+🟩
+BUY VOTE PASSED
+
+📄 20. historical_analyzer.py
+
+🟩
+BUY VOTE PASSED
+
+📄 24. millisecond_forecaster.py
+
+🟩
+BUY VOTE PASSED
+
+📄 28. python_push_to_cloud.py
+
+🟩
+BUY VOTE PASSED
+
+📄 32. secret_signals.py
+
+🟩
+BUY VOTE PASSED
+
+📄 36. visual_master.py
+
+🟩
+BUY VOTE PASSED
+
+⚡ PROJECT 07: THE ELITE HUNT — TIME-TRAVEL ENGINE
+
+৩৬টি কোর ফাইলের আল্ট্রা-অ্যাডভান্সড টাইম-কার্ভ ও স্পিড-অফ-লাইট ফিউচার প্রেডিকশন ম্যাট্রিক্স
+
+streamlit.errors.StreamlitDuplicateElementId: There are multiple selectbox elements with the same auto-generated ID. When this element is created, it is assigned an internal ID based on the element type and provided parameters. Multiple elements with the same type and parameters will cause this error.
+
+To fix this error, please pass a unique key argument to the selectbox element.
+
+Traceback:
+File "/opt/render/project/src/.venv/lib/python3.14/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 129, in exec_func_with_error_handling
+    result = func()
+File "/opt/render/project/src/.venv/lib/python3.14/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 689, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+File "/opt/render/project/src/main_app.py", line 411, in <module>
     'base_vector': st.sidebar.selectbox("Market Dominant Vector Direction", ["BUY", "SELL"]),
-    'tick_velocity': st.sidebar.slider("Photon Price Velocity (Speed of Light Grid)", 10000, 400000, 250000),
-    'dark_pool_imbalance': st.sidebar.slider("Institutional Volumetric Flux", 0.0, 5.0, 3.8),
-    'photon_sync_delay': 0.0004,
-    'quantum_entropy': st.sidebar.slider("Market Randomness Chaos Score", 0.0, 1.0, 0.08),
-    'predicted_drawdown': st.sidebar.slider("Future Predicted Drawdown (%)", 0.0, 10.0, 0.3),
-    'matrix_health': 0.99,
-    'future_probability_index': st.sidebar.slider("Future Candle Extrapolation Curve", 0.0, 1.0, 0.92),
-    'hyper_trend_aligned': st.sidebar.checkbox("Hyper Multi-Timeframe Alignment", value=True),
-    'predicted_close_delta': 0.00025,
-    'candle_loop_streak': st.sidebar.slider("Continuous Same-Color Candles", 0, 10, 1),
-    'current_phase': st.sidebar.selectbox("Current OTC Phase", ["UPWARD", "DOWNWARD"]),
-    'broker_manipulation_index': st.sidebar.slider("Live Broker Spike Risk Factor", 0.0, 1.0, 0.15),
-    'system_overload_flag': False, 'render_clock_skew': 4, 'micro_pips_volatility': 0.00008,
-    'hyper_rsi': 45, 'quantum_macd': "BULLISH_CROSS", 'socket_heartbeat': "EXCELLENT", 'is_manipulated_candle': False,
-    'atomic_drift_ns': 15, 'pattern_fractal_score': 0.92, 'millisecond_timer': 120, 'at_critical_resistance': False,
-    'at_critical_support': True, 'trend_acceleration': 2.1, 'tick_momentum_positive': True, 'fractal_pattern': "BULL_RUN",
-    'umar_ashraf_gate_pass': True, 'cloud_handshake': True, 'container_ram_load': 35, 'environment_stable': True,
-    'consecutive_loss_count': 0, 'proxy_handshake_secure': True, 'hidden_imbalance_present': True, 'virtual_losses_cleared': True,
-    'inside_premium_discount_zone': True, 'is_golden_trading_hour': True, 'canvas_stream_fluid': True
-}
-
-# ------------------------------------------------------------------
-# ⚖️ MATHEMATICAL 99% HIGH-FREQUENCY CONSENSUS
-# ------------------------------------------------------------------
-matrix_outputs = execute_time_travel_36_matrix(live_quantum_feed)
-total_nodes = len(matrix_outputs)
-
-buy_nodes = sum(1 for decision in matrix_outputs.values() if decision == "BUY")
-sell_nodes = sum(1 for decision in matrix_outputs.values() if decision == "SELL")
-hold_nodes = sum(1 for decision in matrix_outputs.values() if decision == "HOLD")
-
-buy_score_pct = (buy_nodes / total_nodes) * 100
-sell_score_pct = (sell_nodes / total_nodes) * 100
-
-st.subheader("📊 Live Time-Travel Engine Analytics Matrix")
-col_t1, col_t2, col_t3 = st.columns(3)
-col_t1.metric("BUY Agreement Confluence", f"{buy_score_pct:.2f}%", f"{buy_nodes} / {total_nodes} Files")
-col_t2.metric("SELL Agreement Confluence", f"{sell_score_pct:.2f}%", f"{sell_nodes} / {total_nodes} Files")
-col_t3.metric("ANTIMANIPULATION SHIELD LOCKS", f"{hold_nodes} Files")
-
-st.write("---")
-
-# ------------------------------------------------------------------
-# 🚨 ABSOLUTE 99% TIME-GATE FILTRATION
-# ------------------------------------------------------------------
-st.markdown("### 🎯 Project 07 Ultimate Order Execution Output:")
-
-if buy_score_pct >= 99.0:
-    st.balloons()
-    st.success("🟩 99% HIGH-END TIME-RECURSION PASSED: ELITE BUY SIGNAL INITIATED!")
-    st.markdown("## **ORDER MATRIX ACTION: CALL (BUY) 🟩**")
-elif sell_score_pct >= 99.0:
-    st.balloons()
-    st.error("🟥 99% HIGH-END TIME-RECURSION PASSED: ELITE SELL SIGNAL INITIATED!")
-    st.markdown("## **ORDER MATRIX ACTION: PUT (SELL) 🟥**")
-else:
-    st.warning("⏳ TIME-SHIELD BALANCE ACTIVE: ৯৯% মেজরিটি কন্ডিশন এখনও পূর্ণ হয়নি।")
-    st.info(f"সর্বোচ্চ চেইন সাপোর্ট রেশিও: BUY ({buy_score_pct:.1f}%) | SELL ({sell_score_pct:.1f}%)। ব্রোকারের ফেক লস এড়াতে সিস্টেম বাটন লক রেখেছে।")
-
-# ------------------------------------------------------------------
-# 📂 REAL-TIME 36-FILE REAL INTEGRATION GRID
-# ------------------------------------------------------------------
-st.write("---")
-st.subheader("📂 Real-Time 36-File Network Sync Grid (Time-Travel Verification Mode)")
-
-ui_columns = st.columns(4)
-file_names_list = list(matrix_outputs.keys())
-
-for idx, f_name in enumerate(file_names_list):
-    target_column = ui_columns[idx % 4]
-    node_vote = matrix_outputs[f_name]
-    
-    with target_column:
-        st.markdown(f"**📄 {f_name}**")
-        if node_vote == "BUY":
-            st.success("🟩 BUY VOTE PASSED")
-        elif node_vote == "SELL":
-            st.error("🟥 SELL VOTE PASSED")
-        else:
-            st.warning("🟨 SYSTEM LOCKED")
-
-import numpy as np
-import pandas as pd
-import math
-# ------------------------------------------------------------------
-# 🌌 QUANTUM TIME-WARP ARCHITECTURE CONFIGURATION
-# ------------------------------------------------------------------
-st.set_page_config(page_title="Project 07: Quantum Time-Engine 37", layout="wide")
-
-st.markdown("""
-    <style>
-    .reportview-container { background: #020205; }
-    .main-title { font-size:42px !important; font-weight: 900; color: #00FFCC; text-align: center; text-shadow: 0px 0px 20px #00FFCC; }
-    .sub-title { font-size:18px !important; color: #8F9CAE; text-align: center; font-style: italic; }
-    .stMetric { background: rgba(0, 255, 204, 0.03); border: 1px solid rgba(0, 255, 204, 0.1); border-radius: 12px; padding: 15px; }
-    </style>
-    """, unsafe_allow_html=True)
-
-st.markdown('<p class="main-title">⚡ PROJECT 07: THE ELITE HUNT — TIME-TRAVEL ENGINE</p>', unsafe_allow_html=True)
-st.markdown('<p class="sub-title">৩৬টি কোর ফাইলের আল্ট্রা-অ্যাডভান্সড টাইম-কার্ভ ও স্পিড-অফ-লাইট ফিউচার প্রেডিকশন ম্যাট্রিক্স</p>', unsafe_allow_html=True)
-st.write("---")
-
-# ------------------------------------------------------------------
-# 🧠 ERROR-PROOF NEURAL CORE ENGINE (THE 36-FILES MONOLITH)
-# ------------------------------------------------------------------
-def execute_time_travel_36_matrix(quantum_feed):
-    """
-    ৩৬টি ফাইলের প্রতিটির হার্ডকোডেড নাম।
-    KeyError থেকে বাঁচতে প্রতিটি ভেরিয়েবলে .get() ব্যবহার করা হয়েছে, যা কোড ক্র্যাশ হওয়া ১০০% রোধ করবে।
-    """
-    votes = {}
-    
-    # বেস ভেক্টর এবং ফিউচার প্রোবাবিলিটি ইনডেক্স সেফলি রিড করা
-    base = quantum_feed.get('base_vector', 'HOLD')
-    future_vector = quantum_feed.get('future_probability_index', 0.5)
-
-    # 📁 ১. Anomaly_Glitch_Hunter.py
-    votes["1. Anomaly_Glitch_Hunter.py"] = "HOLD" if quantum_feed.get('tick_velocity', 0) > 300000 else base
-
-    # 📁 ২. Institutional_Shadow_Tracker.py
-    votes["2. Institutional_Shadow_Tracker.py"] = base if quantum_feed.get('dark_pool_imbalance', 0) >= 3.5 else "HOLD"
-
-    # 📁 ৩. Omni_Cross_Chain_Sync.py
-    votes["3. Omni_Cross_Chain_Sync.py"] = base if quantum_feed.get('photon_sync_delay', 0.01) < 0.001 else "HOLD"
-
-    # 📁 ৪. Quantum_Flux_Scanner.py
-    votes["4. Quantum_Flux_Scanner.py"] = base if quantum_feed.get('quantum_entropy', 1.0) < 0.15 else "HOLD"
-
-    # 📁 ৫. Recursive_Risk_Guardian.py
-    votes["5. Recursive_Risk_Guardian.py"] = "HOLD" if quantum_feed.get('predicted_drawdown', 0) > 4.5 else base
-
-    # 📁 ৬. Self_Healing_Optimizer.py
-    votes["6. Self_Healing_Optimizer.py"] = base if quantum_feed.get('matrix_health', 0) > 0.98 else "HOLD"
-
-    # 📁 ৭. Sentiment_Neural_Bridge.py
-    if future_vector > 0.85: votes["7. Sentiment_Neural_Bridge.py"] = "BUY"
-    elif future_vector < 0.15: votes["7. Sentiment_Neural_Bridge.py"] = "SELL"
-    else: votes["7. Sentiment_Neural_Bridge.py"] = "HOLD"
-
-    # 📁 ৮. The_Elite_Architect_2030.py
-    votes["8. The_Elite_Architect_2030.py"] = base if quantum_feed.get('hyper_trend_aligned', False) else "HOLD"
-
-    # 📁 ৯. ai_consultant.py
-    votes["9. ai_consultant.py"] = "BUY" if quantum_feed.get('predicted_close_delta', 0) > 0.00010 else ("SELL" if quantum_feed.get('predicted_close_delta', 0) < -0.00010 else "HOLD")
-
-    # 📁 ১০. algorithm_hijacker.py
-    if quantum_feed.get('candle_loop_streak', 0) >= 4:
-        votes["10. algorithm_hijacker.py"] = "SELL" if quantum_feed.get('current_phase') == "UPWARD" else "BUY"
-    else:
-        votes["10. algorithm_hijacker.py"] = "HOLD"
-
-    # 📁 ১১. broker_shield_bypass.py
-    votes["11. broker_shield_bypass.py"] = "HOLD" if quantum_feed.get('broker_manipulation_index', 0) > 0.70 else base
-
-    # 📁 ১২. dark_psychology_v2.py
-    votes["12. dark_psychology_v2.py"] = "HOLD" if quantum_feed.get('system_overload_flag', False) else base
-
-    # 📁 ১৩. dashboard.py
-    votes["13. dashboard.py"] = base if quantum_feed.get('render_clock_skew', 100) < 10 else "HOLD"
-
-    # 📁 ১৪. data_thief_engine.py
-    votes["14. data_thief_engine.py"] = base if quantum_feed.get('micro_pips_volatility', 0) > 0.00002 else "HOLD"
-
-    # 📁 ১৫. elite_indicators.py
-    if quantum_feed.get('hyper_rsi', 50) > 65 and quantum_feed.get('quantum_macd') == "BEARISH_CROSS":
-        votes["15. elite_indicators.py"] = "SELL"
-    elif quantum_feed.get('hyper_rsi', 50) < 35 and quantum_feed.get('quantum_macd') == "BULLISH_CROSS":
-        votes["15. elite_indicators.py"] = "BUY"
-    else:
-        votes["15. elite_indicators.py"] = "HOLD"
-
-    # 📁 ১৬. engine_core.py
-    votes["16. engine_core.py"] = base if quantum_feed.get('socket_heartbeat') == "EXCELLENT" else "HOLD"
-
-    # 📁 ১৭. future_forecaster.py
-    votes["17. future_forecaster.py"] = "BUY" if future_vector > 0.75 else ("SELL" if future_vector < 0.25 else "HOLD")
-
-    # 📁 ১৮. glitch_detector.py
-    votes["18. glitch_detector.py"] = "HOLD" if quantum_feed.get('is_manipulated_candle', False) else base
-
-    # 📁 ১৯. global_sync.py
-    votes["19. global_sync.py"] = base if quantum_feed.get('atomic_drift_ns', 100) < 50 else "HOLD"
-
-    # 📁 ২০. historical_analyzer.py
-    votes["20. historical_analyzer.py"] = base if quantum_feed.get('pattern_fractal_score', 0) > 0.85 else "HOLD"
-
-    # 📁 ২১. latency_injector.py
-    votes["21. latency_injector.py"] = base if quantum_feed.get('millisecond_timer', 999) <= 200 else "HOLD"
-
-    # 📁 ২২. logic_101.py
-    if quantum_feed.get('at_critical_resistance', False): votes["22. logic_101.py"] = "SELL"
-    elif quantum_feed.get('at_critical_support', False): votes["22. logic_101.py"] = "BUY"
-    else: votes["22. logic_101.py"] = "HOLD"
-
-    # 📁 ২৩. market_watcher.py
-    votes["23. market_watcher.py"] = base if quantum_feed.get('trend_acceleration', 0) > 1.5 else "HOLD"
-
-    # 📁 ২৪. millisecond_forecaster.py
-    votes["24. millisecond_forecaster.py"] = base if quantum_feed.get('tick_momentum_positive', False) else "HOLD"
-
-    # 📁 ২৫. pattern_recognizer.py
-    votes["25. pattern_recognizer.py"] = "BUY" if quantum_feed.get('fractal_pattern') == "BULL_RUN" else ("SELL" if quantum_feed.get('fractal_pattern') == "BEAR_DROP" else "HOLD")
-
-    # 📁 ২৬. project_07_final_lock.py
-    votes["26. project_07_final_lock.py"] = base if quantum_feed.get('umar_ashraf_gate_pass', False) else "HOLD"
-
-    # 📁 ২৭. push_to_cloud.py
-    votes["27. push_to_cloud.py"] = base if quantum_feed.get('cloud_handshake', False) else "HOLD"
-
-    # 📁 ২৮. python_push_to_cloud.py
-    votes["28. python_push_to_cloud.py"] = "HOLD" if quantum_feed.get('container_ram_load', 0) > 80 else base
-
-    # 📁 ২৯. requirements.txt
-    votes["29. requirements.txt"] = base if quantum_feed.get('environment_stable', False) else "HOLD"
-
-    # 📁 ৩০. risk_shield.py
-    votes["30. risk_shield.py"] = "HOLD" if quantum_feed.get('consecutive_loss_count', 0) >= 2 else base
-
-    # 📁 ৩১. secret_config.py
-    votes["31. secret_config.py"] = base if quantum_feed.get('proxy_handshake_secure', False) else "HOLD"
-
-    # 📁 ৩২. secret_signals.py (🔥 ফিক্সড লাইন: এখানে সেফ ডিরেকশন সেট করা হয়েছে)
-    votes["32. secret_signals.py"] = base if quantum_feed.get('hidden_imbalance_present', True) else "HOLD"
-
-    # 📁 ৩৩. shadow_liquidity_bridge.py
-    votes["33. shadow_liquidity_bridge.py"] = base if quantum_feed.get('virtual_losses_cleared', False) else "HOLD"
-
-    # 📁 ৩৪. smart_money.py
-    votes["34. smart_money.py"] = base if quantum_feed.get('inside_premium_discount_zone', False) else "HOLD"
-
-    # 📁 ৩৫. time_warrior.py
-    votes["35. time_warrior.py"] = base if quantum_feed.get('is_golden_trading_hour', False) else "HOLD"
-
-    # 📁 ৩৬. visual_master.py
-    votes["36. visual_master.py"] = base if quantum_feed.get('canvas_stream_fluid', False) else "HOLD"
-
-    return votes
-
-# ------------------------------------------------------------------
-# 📊 TIME-WARP PIPELINE LIVE DATA CAPTURE
-# ------------------------------------------------------------------
-st.sidebar.markdown("### 🎛️ Live Quantum Feeds")
-live_quantum_feed = {
-    'base_vector': st.sidebar.selectbox("Market Dominant Vector Direction", ["BUY", "SELL"]),
-    'tick_velocity': st.sidebar.slider("Photon Price Velocity (Speed of Light Grid)", 10000, 400000, 250000),
-    'dark_pool_imbalance': st.sidebar.slider("Institutional Volumetric Flux", 0.0, 5.0, 3.8),
-    'photon_sync_delay': 0.0004,
-    'quantum_entropy': st.sidebar.slider("Market Randomness Chaos Score", 0.0, 1.0, 0.08),
-    'predicted_drawdown': st.sidebar.slider("Future Predicted Drawdown (%)", 0.0, 10.0, 0.3),
-    'matrix_health': 0.99,
-    'future_probability_index': st.sidebar.slider("Future Candle Extrapolation Curve", 0.0, 1.0, 0.92),
-    'hyper_trend_aligned': st.sidebar.checkbox("Hyper Multi-Timeframe Alignment", value=True),
-    'predicted_close_delta': 0.00025,
-    'candle_loop_streak': st.sidebar.slider("Continuous Same-Color Candles", 0, 10, 1),
-    'current_phase': st.sidebar.selectbox("Current OTC Phase", ["UPWARD", "DOWNWARD"]),
-    'broker_manipulation_index': st.sidebar.slider("Live Broker Spike Risk Factor", 0.0, 1.0, 0.15),
-    'system_overload_flag': False, 'render_clock_skew': 4, 'micro_pips_volatility': 0.00008,
-    'hyper_rsi': 45, 'quantum_macd': "BULLISH_CROSS", 'socket_heartbeat': "EXCELLENT", 'is_manipulated_candle': False,
-    'atomic_drift_ns': 15, 'pattern_fractal_score': 0.92, 'millisecond_timer': 120, 'at_critical_resistance': False,
-    'at_critical_support': True, 'trend_acceleration': 2.1, 'tick_momentum_positive': True, 'fractal_pattern': "BULL_RUN",
-    'umar_ashraf_gate_pass': True, 'cloud_handshake': True, 'container_ram_load': 35, 'environment_stable': True,
-    'consecutive_loss_count': 0, 'proxy_handshake_secure': True, 'hidden_imbalance_present': True, 'virtual_losses_cleared': True,
-    'inside_premium_discount_zone': True, 'is_golden_trading_hour': True, 'canvas_stream_fluid': True
-}
-
-# ------------------------------------------------------------------
-# ⚖️ MATHEMATICAL 99% HIGH-FREQUENCY CONSENSUS
-# ------------------------------------------------------------------
-matrix_outputs = execute_time_travel_36_matrix(live_quantum_feed)
-total_nodes = len(matrix_outputs)
-
-buy_nodes = sum(1 for decision in matrix_outputs.values() if decision == "BUY")
-sell_nodes = sum(1 for decision in matrix_outputs.values() if decision == "SELL")
-hold_nodes = sum(1 for decision in matrix_outputs.values() if decision == "HOLD")
-
-buy_score_pct = (buy_nodes / total_nodes) * 100
-sell_score_pct = (sell_nodes / total_nodes) * 100
-
-st.subheader("📊 Live Time-Travel Engine Analytics Matrix")
-col_t1, col_t2, col_t3 = st.columns(3)
-col_t1.metric("BUY Agreement Confluence", f"{buy_score_pct:.2f}%", f"{buy_nodes} / {total_nodes} Files")
-col_t2.metric("SELL Agreement Confluence", f"{sell_score_pct:.2f}%", f"{sell_nodes} / {total_nodes} Files")
-col_t3.metric("ANTIMANIPULATION SHIELD LOCKS", f"{hold_nodes} Files")
-
-st.write("---")
-
-# ------------------------------------------------------------------
-# 🚨 ABSOLUTE 99% TIME-GATE FILTRATION
-# ------------------------------------------------------------------
-st.markdown("### 🎯 Project 07 Ultimate Order Execution Output:")
-
-if buy_score_pct >= 99.0:
-    st.balloons()
-    st.success("🟩 99% HIGH-END TIME-RECURSION PASSED: ELITE BUY SIGNAL INITIATED!")
-    st.markdown("## **ORDER MATRIX ACTION: CALL (BUY) 🟩**")
-elif sell_score_pct >= 99.0:
-    st.balloons()
-    st.error("🟥 99% HIGH-END TIME-RECURSION PASSED: ELITE SELL SIGNAL INITIATED!")
-    st.markdown("## **ORDER MATRIX ACTION: PUT (SELL) 🟥**")
-else:
-    st.warning("⏳ TIME-SHIELD BALANCE ACTIVE: ৯৯% মেজরিটি কন্ডিশন এখনও পূর্ণ হয়নি।")
-    st.info(f"সর্বোচ্চ চেইন সাপোর্ট রেশিও: BUY ({buy_score_pct:.1f}%) | SELL ({sell_score_pct:.1f}%)। ব্রোকারের ফেক লস এড়াতে সিস্টেম বাটন লক রেখেছে।")
-
-# ------------------------------------------------------------------
-# 📂 REAL-TIME 36-FILE REAL INTEGRATION GRID
-# ------------------------------------------------------------------
-st.write("---")
-st.subheader("📂 Real-Time 36-File Network Sync Grid (Time-Travel Verification Mode)")
-
-ui_columns = st.columns(4)
-file_names_list = list(matrix_outputs.keys())
-
-for idx, f_name in enumerate(file_names_list):
-    target_column = ui_columns[idx % 4]
-    node_vote = matrix_outputs[f_name]
-    
-    with target_column:
-        st.markdown(f"**📄 {f_name}**")
-        if node_vote == "BUY":
-            st.success("🟩 BUY VOTE PASSED")
-        elif node_vote == "SELL":
-            st.error("🟥 SELL VOTE PASSED")
-        else:
-            st.warning("🟨 SYSTEM LOCKED")
+                   ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/opt/render/project/src/.venv/lib/python3.14/site-packages/streamlit/runtime/metrics_util.py", line 698, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+File "/opt/render/project/src/.venv/lib/python3.14/site-packages/streamlit/elements/widgets/selectbox.py", line 553, in selectbox
+    return self._selectbox(
+           ~~~~~~~~~~~~~~~^
+        label=label,
+        ^^^^^^^^^^^^
+    ...<15 lines>...
+        ctx=ctx,
+        ^^^^^^^^
+    )
+    ^
+File "/opt/render/project/src/.venv/lib/python3.14/site-packages/streamlit/elements/widgets/selectbox.py", line 635, in _selectbox
+    element_id = compute_and_register_element_id(
+        "selectbox",
+    ...<13 lines>...
+        width=width,
+    )
+File "/opt/render/project/src/.venv/lib/python3.14/site-packages/streamlit/elements/lib/utils.py", line 264, in compute_and_register_element_id
+    _register_element_id(ctx, element_type, element_id)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/opt/render/project/src/.venv/lib/python3.14/site-packages/streamlit/elements/lib/utils.py", line 149, in _register_element_id
+    raise StreamlitDuplicateElementId(element_type)-------------------
 
 # 📊 REAL-TIME CORE PIPELINE DATA CAPTURE
 # ------------------------------------------------------------------

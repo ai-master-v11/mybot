@@ -1,9 +1,3 @@
-#
-# ------------------------------------------------------------------
-# 3. SIDEBAR ARCHITECTURE DISPLAY (৩৭টি ফাইলের নাম এবং সিঙ্ক স্ট্যাটাস)
-# ------------------------------------------------------------------
-st.sidebar.subheader("📂 Project 37-File Architecture Grid")
-st.sidebar.success("✅ File 37: main_app.py (Active Brain)")
 
 file_votes = {}
 for file_name, logic in core_files_architecture.items():

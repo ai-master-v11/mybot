@@ -1,3 +1,4 @@
+import streamlit as st
 # --- এই অংশটুকু ৩ নম্বর লাইনের ঠিক ওপরে বসিয়ে দাও ---
 core_files_architecture = {} 
 

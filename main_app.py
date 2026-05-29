@@ -17,6 +17,11 @@ st.header("⚖️ 99% Majority Voting Console")
 st.info("৩৬টি ফাইলের প্রতিটি সুক্ষ্ম লজিক এখানে ইম্পোর্ট করা হয়েছে। ৯৯% এর বেশি ভোট যেদিকে পড়বে, শুধুমাত্র সেদিকেই সিগন্যাল জেনারেট হবে।")
 
 # ভোট গণনা
+# --- এই লাইনটি ২১ নম্বর লাইনের ঠিক ওপরে বসিয়ে দাও ---
+file_votes = {} 
+
+# এর ঠিক নিচেই তোমার আগের ২১ নম্বর লাইনটা থাকবে:
+buy_votes = sum(1 for vote in file_votes.values() if vote == "BUY")  # ✅ এখন আর এরর দেবে না
 total_files = len(core_files_architecture)
 buy_votes = sum(1 for vote in file_votes.values() if vote == "BUY")
 sell_votes = sum(1 for vote in file_votes.values() if vote == "SELL")

@@ -1,13 +1,6 @@
 #
-# কোয়ান্টাম লেভেলের স্পিড বুস্ট করার জন্য (লিনাক্স/ম্যাক হলে uvloop ব্যবহার হবে)
-try:
-    import uvloop
-    asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
-except ImportError:
-    pass  # উইন্ডোজ হলে ডিফল্ট লুপই চলবে
-
 # --- কনফিগারেশন এবং এপিআই কি ---
- openai.api_key = "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"
+ = "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"
 #
 SYMBOL_MT5 = "EURUSD"
 SYMBOL_BINANCE = "eurusd"

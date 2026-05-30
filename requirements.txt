@@ -5,9 +5,3 @@ requests
 numpy
 yfinance
 ccxt
-import asyncio
-import sys
-import json
-import time
-import random
-import os

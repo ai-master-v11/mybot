@@ -5,3 +5,6 @@ requests
 numpy
 yfinance
 ccxt
+websockets
+aiohttp
+openai

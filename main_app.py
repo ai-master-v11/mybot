@@ -1,12 +1,4 @@
 #
-# --- কনফিগারেশন এবং এপিআই কি ---
- = "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"
-#
-SYMBOL_MT5 = "EURUSD"
-SYMBOL_BINANCE = "eurusd"
-SLIPPAGE_LIMIT = 0.00010
-LATENCY_THRESHOLD_MS = 30  # কোয়ান্টাম স্পিড: ৩০ মিলিসেকেন্ডের বেশি হলে রিজেক্ট
-
 class QuantumTradingCommander:
     def __init__(self):
         self.mt5_price = 0.0

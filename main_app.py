@@ -7,7 +7,7 @@ except ImportError:
     pass  # উইন্ডোজ হলে ডিফল্ট লুপই চলবে
 
 # --- কনফিগারেশন এবং এপিআই কি ---
-openai.api_key = "YOUR_OPENAI_API_KEY"
+openai.api_key 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= "YOUR_OPENAI_API_KEY"
 SYMBOL_MT5 = "EURUSD"
 SYMBOL_BINANCE = "eurusd"
 SLIPPAGE_LIMIT = 0.00010

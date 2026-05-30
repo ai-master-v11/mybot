@@ -5,3 +5,15 @@ requests
 numpy
 yfinance
 ccxt
+import asyncio
+import sys
+import json
+import time
+import random
+import os
+import MetaTrader5 as mt5
+import websockets
+import aiohttp
+import speech_recognition as sr
+import pyttsx3
+import openai

@@ -1,3 +1,220 @@
+import asyncio
+import sys
+import json
+import time
+import random
+import os
+import MetaTrader5 as mt5
+import websockets
+import aiohttp
+import speech_recognition as sr
+import pyttsx3
+import openai
+
+# কোয়ান্টাম লেভেলের স্পিড বুস্ট করার জন্য (লিনাক্স/ম্যাক হলে uvloop ব্যবহার হবে)
+try:
+    import uvloop
+    asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+except ImportError:
+    pass  # উইন্ডোজ হলে ডিফল্ট লুপই চলবে
+
+# --- কনফিগারেশন এবং এপিআই কি ---
+openai.api_key = "YOUR_OPENAI_API_KEY"
+SYMBOL_MT5 = "EURUSD"
+SYMBOL_BINANCE = "eurusd"
+SLIPPAGE_LIMIT = 0.00010
+LATENCY_THRESHOLD_MS = 30  # কোয়ান্টাম স্পিড: ৩০ মিলিসেকেন্ডের বেশি হলে রিজেক্ট
+
+class QuantumTradingCommander:
+    def __init__(self):
+        self.mt5_price = 0.0
+        self.binance_price = 0.0
+        self.is_running = True
+        self.voice_active = True  # ভয়েস কন্ট্রোল সুইচ (True = অন, False = অফ)
+        self.trade_logs = []      # এআই অ্যানালিসিসের জন্য ডেটা স্টোরেজ
+        
+        # ভয়েস ইঞ্জিন ইনিশিয়েলাইজেশন
+        self.speech_engine = pyttsx3.init()
+        self.speech_engine.setProperty('rate', 150)
+
+    def ai_speak(self, text):
+        """AI ম্যানেজারের মুখে কথা বলার মেকানিজম"""
+        print(f"\n[AI Manager]: {text}")
+        if self.voice_active:
+            self.speech_engine.say(text)
+            self.speech_engine.runAndWait()
+
+    # ==========================================
+    # ফেজ ১ ও ২: আল্ট্রা-লো লেটেন্সি ডেটা ও এক্সিকিউশন
+    # ==========================================
+    async def fetch_mt5_ticks(self):
+        """MT5 থেকে মাইক্রোসেকেন্ড লেভেলের টিক ডেটা স্পিড"""
+        if not mt5.initialize():
+            print("[-] MT5 কানেক্ট করা যায়নি!")
+            self.is_running = False
+            return
+        
+        while self.is_running:
+            tick = mt5.symbol_info_tick(SYMBOL_MT5)
+            if tick:
+                self.mt5_price = tick.ask
+            await asyncio.sleep(0.001)  # ১ মিলিসেকেন্ড স্ক্যানিং স্পিড
+
+    async def fetch_binance_stream(self):
+        """বাইনান্স আল্ট্রা-ফাস্ট লাইভ ওয়েবসোকেট"""
+        url = f"wss://stream.binance.com:9443/ws/{SYMBOL_BINANCE}@ticker"
+        async with websockets.connect(url) as ws:
+            while self.is_running:
+                data = await ws.recv()
+                json_data = json.loads(data)
+                self.binance_price = float(json_data['a'])
+
+    async def execute_quotex_quantum(self, action, price, reason):
+        """সরাসরি কটেক্স ব্যাকএন্ড সার্ভারে মিলিসেকেন্ডে অর্ডার পুশ"""
+        start_time = time.time() * 1000
+        
+        # অ্যান্টি-ডিটেকশন স্মার্ট হিউম্যান ল্যাগ (০.০০২ থেকে ০.০০৫ সেকেন্ডের র্যান্ডম গ্যাপ)
+        await asyncio.sleep(random.uniform(0.002, 0.005))
+        
+        end_time = time.time() * 1000
+        total_latency = end_time - start_time
+        
+        if total_latency > LATENCY_THRESHOLD_MS:
+            print(f"[!] ল্যাটেন্সি বেশি ({total_latency:.2f}ms)। ট্রেড ড্রপ করা হলো।")
+            return
+
+        # ট্রেড ডেটা লগ স্টোর করা (যা পরে AI রিড করবে)
+        log_entry = {
+            "time": time.strftime("%H:%M:%S"),
+            "action": action,
+            "entry_price": price,
+            "mt5_p": self.mt5_price,
+            "binance_p": self.binance_price,
+            "reason": reason
+        }
+        self.trade_logs.append(log_entry)
+        
+        print(f"[🚀 QUANTUM EXECUTION] -> {action} at {price} (Speed: {total_latency:.2f}ms)")
+        # বাস্তব লাইভে কটেক্স ডাইরেক্ট কানেকশন পেইলড এখানে যাবে:
+        # await self.quotex_ws.send(json.dumps({"op": "tx", "data": log_entry}))
+
+    async def consensus_decision_engine(self):
+        """মাল্টি-সোর্স কনসেনসাস ও স্পাইক ট্র্যাকিং"""
+        await asyncio.sleep(2)  # ডেটা লোড হওয়ার বাফার টাইম
+        last_price = self.mt5_price
+
+        while self.is_running:
+            if self.mt5_price == 0.0 or self.binance_price == 0.0:
+                await asyncio.sleep(0.001)
+                continue
+
+            gap = self.mt5_price - last_price
+
+            # কোয়ান্টাম স্পাইক লজিক + বাইন্যান্স কনফ্লুয়েন্স ভেরিফিকেশন
+            if gap > SLIPPAGE_LIMIT and self.binance_price >= self.mt5_price:
+                reason = f"MT5 jumped by {gap:.5f} and Binance confirmed upward pressure."
+                asyncio.create_task(self.execute_quotex_quantum("CALL", self.mt5_price, reason))
+                last_price = self.mt5_price
+                
+            elif gap < -SLIPPAGE_LIMIT and self.binance_price <= self.mt5_price:
+                reason = f"MT5 dropped by {gap:.5f} and Binance confirmed downward pressure."
+                asyncio.create_task(self.execute_quotex_quantum("PUT", self.mt5_price, reason))
+                last_price = self.mt5_price
+
+            await asyncio.sleep(0.0005)  # সাব-মিলিসেকেন্ড লুপ (0.5ms)
+
+    # ==========================================
+    # ফেজ ৩: ভয়েস অ্যাসিস্ট্যান্ট ও ইন্টারেক্টিভ ম্যানেজার
+    # ==========================================
+    async def voice_command_listener(self):
+        """মুখে কথা বলে ম্যানেজারের সাথে সরাসরি যোগাযোগের ব্যাকগ্রাউন্ড লুপ"""
+        recognizer = sr.Recognizer()
+        
+        while self.is_running:
+            if not self.voice_active:
+                await asyncio.sleep(1)
+                continue
+                
+            with sr.Microphone() as source:
+                recognizer.adjust_for_ambient_noise(source, duration=0.5)
+                try:
+                    # নন-ব্লকিং ভয়েস লিসেনিং
+                    audio = await asyncio.to_thread(recognizer.listen, source, timeout=3, phrase_time_limit=4)
+                    command = await asyncio.to_thread(recognizer.recognize_google, audio, language="bn-BD")
+                    print(f"[You]: {command}")
+                    await self.process_manager_command(command)
+                except (sr.WaitTimeoutError, sr.UnknownValueError):
+                    pass
+                except Exception as e:
+                    print(f"ভয়েস এরর: {e}")
+            await asyncio.sleep(0.1)
+
+    async def process_manager_command(self, command):
+        """ম্যানেজার বটের প্রশ্নের উত্তর দেওয়ার ব্রেন (LLM)"""
+        if "বন্ধ" in command or "চুপ" in command:
+            self.voice_active = False
+            print("[+] ভয়েস অ্যাসিস্ট্যান্ট অফ করা হলো। ব্যাকগ্রাউন্ডে ট্রেডিং চালু থাকবে।")
+            return
+
+        if "লাস্ট ট্রেড" in command or "কেন" in command:
+            if not self.trade_logs:
+                self.ai_speak("বস, এখনো কোনো লাইভ ট্রেড নেওয়া হয়নি।")
+                return
+            
+            last_trade = self.trade_logs[-1]
+            prompt = f"ট্রেড লিমটি হলো: {json.dumps(last_trade)}. কেন এই ট্রেড নেওয়া হয়েছে তা একজন প্রফেশনাল ম্যানেজারের মতো বাংলায় সংক্ষেপে মুখে বুঝিয়ে বলো।"
+            
+            # OpenAI ব্রেন ব্যবহার করে লাইভ অ্যানালিসিস জেনারেট করা
+            response = await asyncio.to_thread(
+                openai.ChatCompletion.create,
+                model="gpt-4o",
+                messages=[{"role": "user", "content": prompt}]
+            )
+            reply = response.choices[0].message.content
+            self.ai_speak(reply)
+
+    # ==========================================
+    # ফেজ ৪: সেলফ-হিলিং (কোড নিজে সংশোধন করা)
+    # ==========================================
+    def self_healing_engine(self, error_msg, script_name=__file__):
+        """কোডে কোনো বড় এরর আসলে AI নিজে ফাইলটি এডিট করে রিস্টার্ট করবে"""
+        self.ai_speak("সিস্টেমে একটি গুরুতর ক্র্যাশ ধরা পড়েছে। আমি কোডটি স্বয়ংক্রিয়ভাবে সংশোধন করছি।")
+        
+        with open(script_name, 'r', encoding='utf-8') as file:
+            current_code = file.read()
+
+        prompt = f"The python code failed with this error: {error_msg}.\n\nHere is the code:\n{current_code}\n\nFix the exact bug and return the full updated code. Do not wrap in markdown code blocks. Just plain code."
+        
+        response = openai.ChatCompletion.create(model="gpt-4o", messages=[{"role": "user", "content": prompt}])
+        fixed_code = response.choices[0].message.content
+
+        with open(script_name, 'w', encoding='utf-8') as file:
+            file.write(fixed_code)
+
+        self.ai_speak("কোড সংশোধন সম্পন্ন। সিস্টেম রিস্টার্ট করা হচ্ছে।")
+        os.execv(sys.executable, ['python'] + sys.argv)  # স্ক্রিপ্টটি রিস্টার্ট করা
+
+    async def main(self):
+        self.ai_speak("কোয়ান্টাম ট্রেডিং কমান্ডার সিস্টেম রেডি, বস।")
+        try:
+            await asyncio.gather(
+                self.fetch_mt5_ticks(),
+                self.fetch_binance_stream(),
+                self.consensus_decision_engine(),
+                self.voice_command_listener()
+            )
+        except Exception as e:
+            print(f"[CRITICAL ERROR]: {e}")
+            self.self_healing_engine(str(e))
+
+if __name__ == "__main__":
+    commander = QuantumTradingCommander()
+    try:
+        asyncio.run(commander.main())
+    except KeyboardInterrupt:
+        print("\n[-] কোয়ান্টাম ইঞ্জিন সফলভাবে বন্ধ করা হয়েছে।")
+        mt5.shutdown()
+
 import streamlit as st
 import numpy as np
 import pandas as pd

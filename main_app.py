@@ -1,16 +1,4 @@
-import asyncio
-import sys
-import json
-import time
-import random
-import os
-import MetaTrader5 as mt5
-import websockets
-import aiohttp
-import speech_recognition as sr
-import pyttsx3
-import openai
-
+#
 # কোয়ান্টাম লেভেলের স্পিড বুস্ট করার জন্য (লিনাক্স/ম্যাক হলে uvloop ব্যবহার হবে)
 try:
     import uvloop

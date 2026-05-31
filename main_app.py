@@ -3171,6 +3171,4 @@ class GhostCellEngine:
             # এটি কোনো মানুষের কমান্ডের তোয়াক্কা না করে ব্যাকগ্রাউন্ডে চলতে থাকবে
             import time
             time.sleep(0.5)
-
-if __name__ == "__main__":
-    
+#

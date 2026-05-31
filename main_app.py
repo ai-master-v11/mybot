@@ -61,7 +61,6 @@ class EvolutionaryBrain:
 if __name__ == "__main__":
     god_mode_system = EvolutionaryBrain()
     god_mode_system.run_forever_loop()
-
 import streamlit as st
 import numpy as np
 import pandas as pd

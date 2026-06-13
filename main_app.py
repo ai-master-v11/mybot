@@ -1,13 +1,4 @@
-# এটি চালানোর আগে আপনার টার্মিনালে লিখতে হবে: pip install streamlit pandas numpy
-import streamlit as st
-import pandas as pd
-import numpy as np
-import time
-import random
-
-# ১. পেজ এবং ডার্ক থিম কনফিগারেশন (উভয় ছবির ফিউশনিস্টিক ব্লু এবং গ্রিন ভাইব)
-st.set_page_config(page_title="Project 07: Elite Swarm Engine", layout="wide")
-
+#
 st.markdown("""
     <style>
     .main { background-color: #050b14; }

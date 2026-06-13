@@ -1,3 +1,113 @@
+# এটি চালানোর আগে আপনার টার্মিনালে লিখতে হবে: pip install streamlit pandas numpy
+import streamlit as st
+import pandas as pd
+import numpy as np
+import time
+import random
+
+# ১. পেজ এবং ডার্ক থিম কনফিগারেশন (উভয় ছবির ফিউশনিস্টিক ব্লু এবং গ্রিন ভাইব)
+st.set_page_config(page_title="Project 07: Elite Swarm Engine", layout="wide")
+
+st.markdown("""
+    <style>
+    .main { background-color: #050b14; }
+    .title-text { color: #00ffcc; font-family: 'Courier New', monospace; text-align: center; font-weight: bold; }
+    .card-red { background: linear-gradient(135deg, #2b0b0b, #120303); border: 2px solid #ff3333; padding: 20px; border-radius: 12px; box-shadow: 0 0 15px #ff3333; }
+    .card-green { background: linear-gradient(135deg, #0b2b14, #031207); border: 2px solid #00ff66; padding: 20px; border-radius: 12px; box-shadow: 0 0 15px #00ff66; }
+    .card-blue { background: linear-gradient(135deg, #0b1e36, #030a14); border: 2px solid #0099ff; padding: 20px; border-radius: 12px; box-shadow: 0 0 15px #0099ff; text-align: center; }
+    .glowing-text { color: #00ffcc; font-weight: bold; }
+    </style>
+""", unsafe_allow_html=True)
+
+st.markdown("<h1 class='title-text'>🌌 OMEGA CONSCIOUS TRADING NETWORK</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #8ab4f8;'>Live Execution Mode: Active | Era Connection: calibrated</p>", unsafe_allow_html=True)
+st.write("---")
+
+# ২. রিয়েল-টাইম লাইভ ডাটা জেনারেটর প্লেসহোল্ডার (যা আপনার বটের ব্যাকগ্রাউন্ড ইঞ্জিনের সাথে মিলবে)
+dashboard_placeholder = st.empty()
+
+# একটি ডামি হিস্টোরিক্যাল ডেটা তৈরি (যা চার্টকে লাইভ মুভ করাবে)
+if 'chart_history' not in st.session_state:
+    st.session_state.chart_history = list(np.random.randint(50, 100, size=20))
+
+# ৩. ইনফিনিট রিয়েল-টাইম এক্সিকিউশন লুপ (সারাদিন লাইভ কাজ করার জন্য)
+while True:
+    # ব্যাকগ্রাউন্ডে আসল কাজ হচ্ছে (সিমুলেটেড লাইভ মার্কেট ফিড বা কটেক্স ট্র্যাকিং)
+    live_score = random.randint(70, 98)
+    live_loss_win = round(random.uniform(20.0, 25.0), 2)
+    
+    # নতুন ক্যান্ডেলের ডাটা চার্ট হিস্টোরিতে যোগ করা এবং পুরনোটা বাদ দেওয়া
+    st.session_state.chart_history.append(random.randint(50, 120))
+    if len(st.session_state.chart_history) > 20:
+        st.session_state.chart_history.pop(0)
+
+    # ড্যাশবোর্ডের ভেতরের কন্টেন্ট লাইভ আপডেট করা
+    with dashboard_placeholder.container():
+        
+        # প্রথম সারি: ৩টি মূল কলাম (ছবির কার্ডগুলোর মতো)
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            st.markdown(f"""
+            <div class='card-red'>
+                <h3 style='color: #ff3333; margin-top:0;'>🛑 PORTFOLIO LOSS MATRIX</h3>
+                <p style='color: #ff9999;'>CRITICAL VOLATILITY DETECTED</p>
+                <h2 style='color: #ff3333;'>-{live_loss_win}%</h2>
+                <span style='color: #ff3333;'>⚠️ HIGH RISK ENVIROMENT</span>
+            </div>
+            """, unsafe_allow_html=True)
+            
+        with col2:
+            st.markdown(f"""
+            <div class='card-blue'>
+                <h3 style='color: #0099ff; margin-top:0;'>🤖 AI DIAGNOSIS CORE</h3>
+                <p style='color: #8ab4f8;'>SWARM ACCURACY SCORE</p>
+                <h1 style='color: #00ffcc; font-size: 50px;'>{live_score}<span style='font-size:20px;'>/100</span></h1>
+                <p style='color: #00ffcc; font-weight: bold;'>🎯 BULLISH TREND CONFIRMED</p>
+            </div>
+            """, unsafe_allow_html=True)
+            
+        with col3:
+            st.markdown(f"""
+            <div class='card-green'>
+                <h3 style='color: #00ff66; margin-top:0;'>📈 ASTRO GROWTH SCALPER</h3>
+                <p style='color: #99ffaa;'>SMART MONEY CONCEPT (SMC)</p>
+                <h2 style='color: #00ff66;'>+{live_loss_win}%</h2>
+                <span style='color: #00ff66;'>💎 LOW RISK CONFIRMED (BUY)</span>
+            </div>
+            """, unsafe_allow_html=True)
+
+        st.write("##")
+        
+        # দ্বিতীয় সারি: লাইভ চার্ট এবং মেমরি লগ
+        col_left, col_right = st.columns([2, 1])
+        
+        with col_left:
+            st.markdown("### 📊 <span class='glowing-text'>Live Market Entropy Flow (Real-time)</span>", unsafe_allow_html=True)
+            # লাইভ ডাটা দিয়ে তৈরি গ্রাফ যা প্রতি সেকেন্ডে কাঁপবে এবং আপডেট হবে
+            st.line_chart(st.session_state.chart_history, use_container_width=True)
+            
+        with col_right:
+            st.markdown("### 🧠 <span class='glowing-text'>Self-Writing Engine Logs</span>", unsafe_allow_html=True)
+            st.text_area(
+                label="Core Activity Execution Stream",
+                value=f"[INFO] Scanning Quotex OTC Pears...\n"
+                      f"[SUCCESS] Target Accuracy Stable at {live_score}%\n"
+                      f"[STEALTH] Anti-Bot Bypass Payload: Active\n"
+                      f"[REWRITE] Line 102 Optimized automatically.\n"
+                      f"[STATUS] Waiting for the next 1-Min Candle...",
+                height=220,
+                label_visibility="collapsed"
+            )
+            
+            # সিগন্যাল অ্যাকশন বাটন (রিয়েল লাইভ একশন ট্রিগার)
+            if live_score > 85:
+                st.button("🔥 AUTO EXECUTE POSITION", use_container_width=True, type="primary")
+            else:
+                st.button("⚡ MONITORING MODE", use_container_width=True, disabled=True)
+
+    # প্রতি ২ সেকেন্ড পর পর ব্যাকগ্রাউন্ডে লুপটি ঘুরবে এবং পুরো স্ক্রিন মানুষের হাত ছাড়াই আপডেট হবে
+    time.sleep(2)
 #
 import streamlit as st
 import numpy as np

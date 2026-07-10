@@ -3781,5 +3781,4 @@ with col_main:
         st.markdown("</div>", unsafe_allow_html=True)
 
 # প্রতি সেকেন্ডে ব্যাকগ্রাউন্ড রিফ্রেশ ও স্ক্রিন সচল রাখার লুপ
-time.sleep(1)
-st.
+#

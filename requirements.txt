@@ -1,3 +1,6 @@
+#
+plotly
+numba
 streamlit
 pandas
 yfinance

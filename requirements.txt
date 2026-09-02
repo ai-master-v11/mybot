@@ -1,4 +1,8 @@
-#
+streamlit
+numpy
+pandas
+pytz
+google-genai
 plotly
 numba
 streamlit
@@ -11,7 +15,3 @@ ccxt
 websockets
 aiohttp
 openai
-numpy
-pandas
-pytz
-google-genai

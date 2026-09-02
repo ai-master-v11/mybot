@@ -11,3 +11,7 @@ ccxt
 websockets
 aiohttp
 openai
+numpy
+pandas
+pytz
+google-genai

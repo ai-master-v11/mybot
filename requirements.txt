@@ -1,3 +1,4 @@
+elevenlabs
 streamlit
 numpy
 pandas

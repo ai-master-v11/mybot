@@ -1,3 +1,22 @@
+import os
+from elevenlabs.client import ElevenLabs
+from elevenlabs import save
+
+# Render এর Environment থেকে API Key নিয়ে আসা
+api_key = os.environ.get("ELEVENLABS_API_KEY")
+client = ElevenLabs(api_key=api_key)
+
+def generate_bengali_voice(text):
+    # বাংলা স্পষ্ট উচ্চারণের জন্য 'eleven_multilingual_v2' মডেল ব্যবহৃত হচ্ছে
+    audio = client.generate(
+        text=text,
+        voice="Rachel",  # অথবা আপনার পছন্দের যেকোনো Voice ID
+        model="eleven_multilingual_v2"
+    )
+    
+    output_filename = "response.mp3"
+    save(audio, output_filename)
+    return output_filename
 import streamlit as st
 import numpy as np
 import pandas as pd

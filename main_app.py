@@ -1,5 +1,22 @@
 import os
 from elevenlabs.client import ElevenLabs
+
+client = ElevenLabs(api_key=os.environ.get("ELEVENLABS_API_KEY"))
+
+def generate_natural_bengali_voice(text):
+    audio = client.generate(
+        text=text,
+        voice="Aria",  # অথবা আপনার পছন্দের যেকোনো হিউম্যান ভয়েস
+        model="eleven_multilingual_v2",  # বাংলা মানুষের মতো শোনানোর জন্য এই মডেল জরুরি
+        voice_settings={
+            "stability": 0.35,        # কম স্টেবিলিটি মানে বেশি স্বাভাবিক মানুষের মতো এক্সপ্রেশন
+            "similarity_boost": 0.75,
+            "style": 0.40             # ডায়ালগ ও ন্যাচারাল টোন বাড়াবে
+        }
+    )
+    return audio
+import os
+from elevenlabs.client import ElevenLabs
 from elevenlabs import save
 
 # Render এর Environment থেকে API Key নিয়ে আসা

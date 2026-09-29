@@ -1,7 +1,4 @@
-pandas
-MetaTrader5
-install
-pip   
+pip install MetaTrader5
 elevenlabs
 streamlit
 numpy

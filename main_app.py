@@ -1,3 +1,54 @@
+import json
+import asyncio
+import websockets
+
+# Quotex / Binary Data WebSocket Handler
+class QuotexLiveStream:
+    def __init__(self, ws_url):
+        self.ws_url = ws_url
+        self.is_connected = False
+
+    async def connect_and_stream(self):
+        async with websockets.connect(
+            self.ws_url,
+            extra_headers={
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+                "Origin": "https://qxbroker.com"
+            }
+        ) as websocket:
+            self.is_connected = True
+            print("🟢 Quotex Real-Time WebSocket Connected Successfully!")
+            
+            # Subscribe to Assets (Example: EUR/USD_otc)
+            subscribe_msg = json.dumps({
+                "action": "subscribe",
+                "asset": "EURUSD_otc",
+                "period": 60 # 1 Min Candle
+            })
+            await websocket.send(subscribe_msg)
+
+            while True:
+                response = await websocket.recv()
+                data = json.loads(response)
+                
+                # Real-time Candle Parser
+                if "candle" in data:
+                    candle = data["candle"]
+                    open_p  = candle["open"]
+                    high_p  = candle["high"]
+                    low_p   = candle["low"]
+                    close_p = candle["close"]
+                    t_stamp = candle["time"]
+                    
+                    # পাস করুন আপনার ১০০টি প্যাটার্ন ইঞ্জিনে
+                    self.process_live_candle(open_p, high_p, low_p, close_p, t_stamp)
+
+    def process_live_candle(self, o, h, l, c, t):
+        # রিয়েল টাইম ক্যান্ডেল ডেটা প্রসেসিং ফিল্টার
+        print(f"⏰ Time: {t} | O: {o} | H: {h} | L: {l} | C: {c}")
+
+# asyncio.run(QuotexLiveStream("wss://ws.qxbroker.com/socket.io/?EIO=3&transport=websocket").connect_and_stream())
+
 import streamlit as st
 import numpy as np
 import pandas as pd

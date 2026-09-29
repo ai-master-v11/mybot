@@ -1,6 +1,6 @@
-pip install MetaTrader5
+#
 elevenlabs
-streamlit
+streamline
 numpy
 pandas
 pytz

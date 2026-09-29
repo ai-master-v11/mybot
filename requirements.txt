@@ -1,6 +1,3 @@
-MetaTrader5
-Streamlit
-pandas
 elevenlabs
 streamline
 numpy

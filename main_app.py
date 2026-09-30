@@ -1,4 +1,18 @@
-#
+def check_advanced_setup(df):
+    latest = df.iloc[-1]
+    prev = df.iloc[-2]
+    
+    # শর্ত ১: Sellside Liquidity Sweep + Bullish FVG + High Volume = STRONG CALL
+    if (latest['low'] < prev['low']) and (latest['close'] > prev['high']) and (latest['tick_volume'] > prev['tick_volume'] * 1.5):
+        return "UP (CALL) - SSL Sweep + High Volume FVG Reversal"
+        
+    # শর্ত ২: Buyside Liquidity Sweep + Low Volume Fakeout = STRONG PUT
+    elif (latest['high'] > prev['high']) and (latest['close'] < prev['open']) and (latest['tick_volume'] < prev['tick_volume']):
+        return "DOWN (PUT) - BSL Trap + Bearish Rejection"
+        
+    else:
+        return "NEUTRAL / WAIT"
+
 # ==============================================================================
 # 🚀 AI MASTER V14 - 300 ADVANCED ALGORITHMS WITH MARKET DIRECTION
 # ==============================================================================

@@ -1,4 +1,9 @@
-pip install MetaTrader5 pandas numpy pyttsx3 speech_recognition crewai
+MetaTrader5
+pandas
+numpy
+pyttsx3
+speech_recognition
+crewai
 elevenlabs
 streamline
 numpy
